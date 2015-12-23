@@ -36,9 +36,4 @@ class AccessLogs extends Controller
         BackendMenu::setContext('October.System', 'system', 'settings');
         SettingsManager::setContext('October.Backend', 'access_logs');
     }
-
-    public function index_onRefresh()
-    {
-        return $this->listRefresh();
-    }
 }

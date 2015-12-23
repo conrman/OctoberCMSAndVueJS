@@ -158,9 +158,8 @@
 
         var dependencyValues = this.getDependencyValues()
 
-        if (this.prevDependencyValues === undefined || this.prevDependencyValues != dependencyValues) {
+        if (this.prevDependencyValues === undefined || this.prevDependencyValues != dependencyValues)
             this.loadDynamicOptions()
-        }
     }
 
     DropdownEditor.prototype.onExternalPropertyEditorHidden = function() {

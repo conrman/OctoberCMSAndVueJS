@@ -39,8 +39,7 @@ class SeedSetupAdmin extends Seeder
             'password_confirmation' => static::$password,
             'first_name'            => static::$firstName,
             'last_name'             => static::$lastName,
-            'permissions'           => [],
-            'is_superuser'         => true,
+            'permissions'           => ['superuser' => 1],
             'is_activated'          => true
         ]);
 

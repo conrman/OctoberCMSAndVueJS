@@ -3,7 +3,7 @@
 # ===================================
 
 fields:
-    is_superuser:
+    permissions[superuser]:
         context: [create, update]
         tab: backend::lang.user.permissions
         label: backend::lang.user.superuser

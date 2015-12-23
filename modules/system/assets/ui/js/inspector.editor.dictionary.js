@@ -59,11 +59,13 @@
             }
         }
         else {
+            var itemCount = 0
+
             if (typeof value !== 'object') {
                 this.throwError('Object list value should be an object.')
             }
 
-            var itemCount = this.getValueKeys(value).length
+            itemCount = this.getValueKeys(value).length
 
             $.oc.foundation.element.removeClass(link, 'placeholder')
             link.textContent = 'Items: ' + itemCount
@@ -115,7 +117,7 @@
                 </div>                                                                                  \
                 <div class="modal-footer">                                                              \
                     <button type="submit" class="btn btn-primary">OK</button>                           \
-                    <button type="button" class="btn btn-default" data-dismiss="popup">Cancel</button>   \
+                    <button type="button" class="btn btn-default"data-dismiss="popup">Cancel</button>   \
                 </div>                                                                                  \
                 </form>'
     }
@@ -438,12 +440,10 @@
     }
 
     DictionaryEditor.prototype.onKeyDown = function(ev) {
-        if (ev.keyCode == 40) {
+        if (ev.keyCode == 40)
             return this.navigateDown(ev)
-        }
-        else if (ev.keyCode == 38) {
+        else if (ev.keyCode == 38)
             return this.navigateUp(ev)
-        }
     }
 
     $.oc.inspector.propertyEditors.dictionary = DictionaryEditor

@@ -95,7 +95,7 @@ class Users extends Controller
         }
 
         if (!$this->user->isSuperUser()) {
-            $form->removeField('is_superuser');
+            $form->removeField('permissions[superuser]');
         }
 
         /*
@@ -150,7 +150,7 @@ class Users extends Controller
                     ],
                     'trigger' => [
                         'action' => 'disable',
-                        'field' => 'is_superuser',
+                        'field' => 'permissions[superuser]',
                         'condition' => 'checked'
                     ],
                     'span' => 'auto',

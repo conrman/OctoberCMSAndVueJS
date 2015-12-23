@@ -5,7 +5,6 @@
  * and containers.
  */
 +function ($) { "use strict";
-
     var Base = $.oc.foundation.base,
         BaseProto = Base.prototype
 
@@ -147,14 +146,22 @@
         var applyEvent = $.Event('apply.oc.inspector')
 
         $container.trigger(applyEvent)
-        return !applyEvent.isDefaultPrevented();
+        if (applyEvent.isDefaultPrevented()) {
+            return false
+        }
+
+        return true
     }
 
     InspectorManager.prototype.containerHidingAllowed = function($container) {
         var allowedEvent = $.Event('beforeContainerHide.oc.inspector')
 
         $container.trigger(allowedEvent)
-        return !allowedEvent.isDefaultPrevented();
+        if (allowedEvent.isDefaultPrevented()) {
+            return false
+        }
+
+        return true
     }
 
     InspectorManager.prototype.onInspectableClicked = function(ev) {

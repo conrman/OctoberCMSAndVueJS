@@ -6,7 +6,7 @@
     // NAMESPACES
     // ============================
 
-    if ($.oc.inspector.validators === undefined)
+      if ($.oc.inspector.validators === undefined)
         $.oc.inspector.validators = {}
 
     // CLASS DEFINITION
@@ -48,7 +48,11 @@
             return true
         }
 
-        return !!(typeof value === 'string' || typeof value == 'number' || typeof value == 'boolean');
+        if (typeof value === 'string' || typeof value == 'number' || typeof value == 'boolean') {
+            return true
+        }
+
+        return false
     }
 
     BaseValidator.prototype.isValid = function(value) {

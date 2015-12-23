@@ -53,8 +53,7 @@
 
             try {
                 return valuesStr.length === 0 ? {} : $.parseJSON(valuesStr)
-            }
-            catch (err) {
+            } catch (err) {
                 throw new Error('Error parsing Inspector field values. ' + err)
             }
         }
@@ -114,7 +113,7 @@
             self = this
 
         $.oc.stripeLoadIndicator.show()
-        $form.request('onGetInspectorConfiguration', {
+        var request = $form.request('onGetInspectorConfiguration', {
             data: data
         }).done(function inspectorConfigurationRequestDoneClosure(data) {
             self.configurartionRequestDone(data, onComplete, result)
@@ -135,12 +134,10 @@
 
             try {
                return $.parseJSON(configuration)
-            }
-            catch(err) {
+            } catch(err) {
                 throw new Error('Error parsing Inspector configuration. ' + err)
             }
-        }
-        else {
+        } else {
             return configuration
         }
     }

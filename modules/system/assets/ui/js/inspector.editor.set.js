@@ -88,8 +88,7 @@
 
             text = '[' + textValues.join(', ') + ']'
             $.oc.foundation.element.removeClass(link, 'placeholder')
-        }
-        else {
+        } else {
             text = this.propertyDefinition.placeholder
 
             if ((typeof text === 'string' && text.length == 0) || text === undefined) {

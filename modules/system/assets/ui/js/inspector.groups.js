@@ -49,9 +49,8 @@
         var groupIndex = this.getGroupIndex(group),
             statuses = this.readGroupStatuses()
 
-        if (statuses[groupIndex] !== undefined) {
+        if (statuses[groupIndex] !== undefined)
             return statuses[groupIndex]
-        }
 
         return false
     }

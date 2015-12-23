@@ -4,6 +4,7 @@ layout = "coming-soon-layout"
 description = "Coming Soon | VerveTronix"
 is_hidden = "0"
 meta_title = "Coming Soon | VerveTronix"
+
 ==
 {% partial "trans-header" %}
 
@@ -28,6 +29,7 @@ var oxyThemeData = {
 </script>
 
 <div id="content">
+    {% partial "customer-subscription-form" %}
     <article>
         <section class="section swatch-black section-text-shadow section-inner-shadow">
             <div class="background-media" data-start="background-position:" data-70-top-bottom="background-position:">
@@ -45,9 +47,9 @@ var oxyThemeData = {
                                 We're about to change your life<br> <strong>On-Stage</strong> and in the <strong>Studio</strong>.
                             </h2>
                         </header>
-                        <a href="/index.html" class="btn btn-link btn-lg element-short-top element-tall-bottom os-animation" target="_self" data-os-animation="fadeInUp" data-os-animation-delay="1s ">
+                        <button data-toggle="modal" data-target="#subscriptionForm" class="btn btn-link btn-lg element-short-top element-tall-bottom os-animation" target="_self" data-os-animation="fadeInUp" data-os-animation-delay="1s ">
                             Let me know as soon as it happens!
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -61,35 +63,42 @@ var oxyThemeData = {
                                 Coming real soon!
                             </h2>
                         </header>
-                        <div class="figure  element-short-top element-short-bottom os-animation image-filter-none image-filter-onhover fade-none text-center figcaption-middle normalwidth animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay="0.1s" style="-webkit-animation: 0.1s;">
-                            <span class="figure-image">
-                                <img src="{{ 'assets/images/mojo.jpg'|theme }}" alt="VerveTronix Mojo Foot-controller" class="normalwidth">
-                            </span>
-                        </div>
+
                         <div class="row">
-                            <div class="col-md-6 text-right">
-                                <div class="element-medium-top element-tall-bottom os-animation" data-os-animation="fadeIn" data-os-animation-delay="0s">
-                                    <p class="lead">
-                                        The <strong>Mojo</strong> is an 8-switch foot-controller that enables you to tap into the power of modern computers/laptops easily, quickly, and without compromising on quality. While being nearly half the price of most decent multi-effects units out there.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-left">
-                                <div class="element-medium-top element-tall-bottom os-animation" data-os-animation="fadeIn" data-os-animation-delay="0s">
-                                    <p class="lead">
-                                        <ul>
-                                            <li>Easily assign both effects and functions to it’s 8 foot-switches using almost any DAW.</li>
-                                            <li>Nearly unlimited number of effects and capabilities at your toe-tips.</li>
-                                            <li>Simple USB connection to your computer.</li>
-                                            <li>Doesn’t need a separate power supply or battery.</li>
-                                            <li>Fully Plug-n-Play. Needs no additional driver/software installation.</li>
-                                            <li>Works with Windows, Mac OS and Linux platforms.</li>
-                                            <li>Not limited to just guitars or bass, use it for any instrument you can imagine.</li>
-                                            <li>Stainless Steel Body so it can stand against you and the elements.</li>
-                                            <li>Does not touch your audio signal at all.</li>
-                                            <li>Highest quality components.</li>
-                                        </ul>
-                                    </p>
+                            <div class="col-md-offset-1 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-6 text-center">
+                                        <div class="element-medium-top element-tall-bottom os-animation" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                                            <span class="figure-image">
+                                                <img src="{{ 'assets/images/mojo.jpg'|theme }}" alt="VerveTronix Mojo Foot-controller" class="normalwidth">
+                                            </span>
+                                            <p class="text-center element-short-top">
+                                                <a href="{{ [url|app, '/dealership']|join }}" class="btn btn-primary">Become a Dealer</a>
+                                                <a href="#" class="btn btn-primary">Where to Buy Now</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-left">
+                                        <div class="element-medium-top element-tall-bottom os-animation" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                                            <p class="lead">
+                                                The <strong>Mojo</strong> is an 8-switch foot-controller that enables you to tap into the power of modern computers/laptops easily, quickly, and without compromising on quality. While being nearly half the price of most decent multi-effects units out there.
+                                            </p>
+                                            <p class="lead">
+                                                <ul>
+                                                    <li>Easily assign both effects and functions to it’s 8 foot-switches using almost any DAW.</li>
+                                                    <li>Nearly unlimited number of effects and capabilities at your toe-tips.</li>
+                                                    <li>Simple USB connection to your computer.</li>
+                                                    <li>Doesn’t need a separate power supply or battery.</li>
+                                                    <li>Fully Plug-n-Play. Needs no additional driver/software installation.</li>
+                                                    <li>Works with Windows, Mac OS and Linux platforms.</li>
+                                                    <li>Not limited to just guitars or bass, use it for any instrument you can imagine.</li>
+                                                    <li>Stainless Steel Body so it can stand against you and the elements.</li>
+                                                    <li>Does not touch your audio signal at all.</li>
+                                                    <li>Highest quality components.</li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -98,6 +107,6 @@ var oxyThemeData = {
             </div>
         </section>
     </article>
-    
+
     {% partial "simple-footer" %}
 </div>
