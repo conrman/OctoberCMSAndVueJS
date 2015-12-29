@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: sublimearts.dealers::lang.group.label
+
+# Model Form Field configuration
+form: $/sublimearts/dealers/models/dealergroup/fields.yaml
+
+# Model Class name
+modelClass: SublimeArts\Dealers\Models\DealerGroup
+
+# Default redirect location
+defaultRedirect: sublimearts/dealers/dealergroups
+
+# Create page
+create:
+    title: sublimearts.dealers::lang.groups.create_title
+    redirect: sublimearts/dealers/dealergroups/update/:id
+    redirectClose: sublimearts/dealers/dealergroups
+
+# Update page
+update:
+    title: sublimearts.dealers::lang.groups.update_title
+    redirect: sublimearts/dealers/dealergroups
+    redirectClose: sublimearts/dealers/dealergroups
+
+# Preview page
+preview:
+    title: sublimearts.dealers::lang.groups.update_title

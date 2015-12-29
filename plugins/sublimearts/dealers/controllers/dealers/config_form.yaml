@@ -1,0 +1,25 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: sublimearts.dealers::lang.dealer.label
+
+# Model Form Field configuration
+form: $/sublimearts/dealers/models/dealer/fields.yaml
+
+# Model Class name
+modelClass: SublimeArts\Dealers\Models\Dealer
+
+# Default redirect location
+defaultRedirect: sublimearts/dealers/dealers
+
+# Create page
+create:
+    redirect: sublimearts/dealers/dealers/update/:id
+    redirectClose: sublimearts/dealers/dealers
+
+# Update page
+update:
+    redirect: sublimearts/dealers/dealers
+    redirectClose: sublimearts/dealers/dealers

@@ -1,0 +1,21 @@
+<div class="layout-row min-size">
+    <div class="callout callout-warning">
+        <div class="header">
+            <i class="icon-warning"></i>
+            <h3><?= e(trans('sublimearts.dealers::lang.dealers.activate_warning_title')) ?></h3>
+            <p><?= e(trans('sublimearts.dealers::lang.dealers.activate_warning_desc')) ?></p>
+        </div>
+        <div class="content">
+            <div class="loading-indicator-container">
+                <button
+                    type="button"
+                    class="btn btn-warning"
+                    data-request="onActivate"
+                    data-load-indicator="<?= e(trans('sublimearts.dealers::lang.dealers.activating')) ?>"
+                    data-request-confirm="<?= e(trans('sublimearts.dealers::lang.dealers.activate_confirm')) ?>">
+                    <?= e(trans('sublimearts.dealers::lang.dealers.active_manually')) ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

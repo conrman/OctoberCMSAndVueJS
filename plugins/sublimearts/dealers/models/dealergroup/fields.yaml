@@ -1,0 +1,23 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: sublimearts.dealers::lang.group.name
+        span: left
+
+    code:
+        label: sublimearts.dealers::lang.group.code
+        comment: sublimearts.dealers::lang.group.code_comment
+        span: right
+        preset: name
+
+    description:
+        label: sublimearts.dealers::lang.group.description_field
+        type: textarea
+        size: tiny
+
+    discount:
+        label: Discount over FOB
+        type: number

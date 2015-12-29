@@ -1,0 +1,61 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+tabs:
+    fields:
+
+        # Require Activation
+        allow_registration:
+            span: left
+            label: sublimearts.dealers::lang.settings.allow_registration
+            comment: sublimearts.dealers::lang.settings.allow_registration_comment
+            type: switch
+            tab: sublimearts.dealers::lang.settings.registration_tab
+
+        # Require Activation
+        require_activation:
+            span: left
+            label: sublimearts.dealers::lang.settings.require_activation
+            comment: sublimearts.dealers::lang.settings.require_activation_comment
+            type: switch
+            tab: sublimearts.dealers::lang.settings.activation_tab
+
+        # Activation Mode
+        activate_mode:
+            span: left
+            commentAbove: sublimearts.dealers::lang.settings.activate_mode_comment
+            label: sublimearts.dealers::lang.settings.activate_mode
+            type: radio
+            tab: sublimearts.dealers::lang.settings.activation_tab
+
+        # Throttle Sign In
+        use_throttle:
+            span: left
+            label: sublimearts.dealers::lang.settings.use_throttle
+            comment: sublimearts.dealers::lang.settings.use_throttle_comment
+            type: switch
+            tab: sublimearts.dealers::lang.settings.signin_tab
+
+        # Login Attribute
+        login_attribute:
+            span: left
+            label: sublimearts.dealers::lang.settings.login_attribute
+            commentAbove: sublimearts.dealers::lang.settings.login_attribute_comment
+            type: radio
+            tab: sublimearts.dealers::lang.settings.signin_tab
+
+        # Hint
+        template_hint:
+            type: hint
+            path: $/sublimearts/dealers/models/settings/_template_hint.htm
+            tab: sublimearts.dealers::lang.settings.notifications_tab
+
+        # Welcome Template
+        welcome_template:
+            span: left
+            label: sublimearts.dealers::lang.settings.welcome_template
+            comment: sublimearts.dealers::lang.settings.welcome_template_comment
+            type: dropdown
+            default: sublimearts.dealers::mail.activate
+            tab: sublimearts.dealers::lang.settings.notifications_tab

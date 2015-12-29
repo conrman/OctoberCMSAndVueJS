@@ -1,0 +1,34 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: sublimearts.dealers::lang.dealer.id
+        invisible: true
+
+    username:
+        label: sublimearts.dealers::lang.dealer.username
+        searchable: true
+        invisible: true
+
+    company_name:
+        label: sublimearts.dealers::lang.dealer.company_name
+        searchable: true
+
+    email:
+        label: sublimearts.dealers::lang.dealer.email
+        searchable: true
+
+    created_at:
+        label: sublimearts.dealers::lang.dealer.created_at
+        type: datetime
+
+    is_activated:
+        label: Activated?
+        type: switch
+
+    activated_at:
+        label: Activated On
+        type: datetime

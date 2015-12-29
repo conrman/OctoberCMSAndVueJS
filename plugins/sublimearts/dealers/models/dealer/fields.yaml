@@ -1,0 +1,52 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    company_name:
+        label: sublimearts.dealers::lang.dealer.company_name
+        span: auto
+
+tabs:
+    fields:
+
+        email:
+            label: sublimearts.dealers::lang.dealer.email
+            tab: sublimearts.dealers::lang.dealer.account
+            span: full
+
+        password:
+            label: sublimearts.dealers::lang.dealer.reset_password
+            comment: sublimearts.dealers::lang.dealer.reset_password_comment
+            tab: sublimearts.dealers::lang.dealer.account
+            type: password
+            span: left
+
+        password_confirmation:
+            label: sublimearts.dealers::lang.dealer.confirm_password
+            comment: sublimearts.dealers::lang.dealer.confirm_password_comment
+            tab: sublimearts.dealers::lang.dealer.account
+            type: password
+            span: right
+
+        username:
+            label: sublimearts.dealers::lang.dealer.username
+            hidden: true
+            span: left
+
+        group:
+            label: sublimearts.dealers::lang.dealer.groups
+            tab: sublimearts.dealers::lang.dealer.account
+            type: relation
+            emptyOption: sublimearts.dealers::lang.dealer.empty_groups
+
+secondaryTabs:
+    fields:
+
+        avatar:
+            label: sublimearts.dealers::lang.dealer.avatar
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260

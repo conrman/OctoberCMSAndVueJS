@@ -1,0 +1,19 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+
+    groups:
+
+        # Filter name
+        label: sublimearts.dealers::lang.group.label
+
+        # Model Class name
+        modelClass: SublimeArts\Dealers\Models\DealerGroup
+
+        # Model attribute to display for the name
+        nameFrom: company_name
+
+        # Filter scope
+        scope: filterByGroup
