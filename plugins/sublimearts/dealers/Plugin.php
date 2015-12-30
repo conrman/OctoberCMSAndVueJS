@@ -49,9 +49,9 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'SublimeArts\Models\Components\Session'       => 'session',
-            'SublimeArts\Models\Components\Account'       => 'account',
-            'SublimeArts\Models\Components\ResetPassword' => 'resetPassword'
+            'SublimeArts\Dealers\Components\Session'       => 'session',
+            'SublimeArts\Dealers\Components\Account'       => 'account',
+            'SublimeArts\Dealers\Components\ResetPassword' => 'resetPassword'
         ];
     }
 
