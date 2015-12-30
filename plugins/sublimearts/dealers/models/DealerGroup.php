@@ -24,9 +24,9 @@ class DealerGroup extends GroupBase
     /**
      * @var array Relations
      */
-    public $belongsToMany = [
-        'dealers'       => ['SublimeArts\Dealers\Models\Dealer', 'table' => 'sublimearts_dealers_dealers_groups'],
-        'dealers_count' => ['SublimeArts\Dealers\Models\Dealer', 'table' => 'sublimearts_dealers_dealers_groups', 'count' => true]
+    public $hasMany = [
+        'dealers'       => ['SublimeArts\Dealers\Models\Dealer', 'key' => 'dealers_group_id'],
+        'dealers_count' => ['SublimeArts\Dealers\Models\Dealer', 'key' => 'dealers_group_id', 'count' => true]
     ];
 
     /**

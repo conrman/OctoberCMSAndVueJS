@@ -15,12 +15,17 @@ columns:
     code:
         label: sublimearts.dealers::lang.group.code
 
-    created_at:
-        label: sublimearts.dealers::lang.group.created_at
-        type: datetime
+    discount:
+        label: Discount %
+        type: number
+        select: concat(discount, '%')
 
     dealers_count:
         label: sublimearts.dealers::lang.group.dealers_count
         relation: dealers_count
         valueFrom: count
         default: 0
+
+    created_at:
+        label: sublimearts.dealers::lang.group.created_at
+        type: datetime

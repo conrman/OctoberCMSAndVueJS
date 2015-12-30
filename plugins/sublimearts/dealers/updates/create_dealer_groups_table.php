@@ -18,20 +18,11 @@ class CreateDealerGroupsTable extends Migration
             $table->integer('discount')->default(0);
             $table->timestamps();
         });
-
-        Schema::create('sublimearts_dealers_dealers_groups', function($table)
-        {
-            $table->engine = 'InnoDB';
-            $table->integer('dealer_id')->unsigned();
-            $table->integer('dealer_group_id')->unsigned();
-            $table->primary(['dealer_id', 'dealer_group_id'], 'dealer_group');
-        });
     }
 
     public function down()
     {
         Schema::dropIfExists('sublimearts_dealers_dealer_groups');
-        Schema::dropIfExists('sublimearts_dealers_dealers_groups');
     }
 
 }

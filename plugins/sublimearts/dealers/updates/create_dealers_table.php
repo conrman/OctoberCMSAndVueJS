@@ -14,7 +14,7 @@ class CreateDealersTable extends Migration
             $table->increments('id');
 
             $table->string('username')->unique()->index();
-            $table->integer('group_id')->nullable();
+            $table->integer('dealers_group_id')->nullable();
             $table->string('email')->unique()->index();
             $table->string('company_name')->unique()->index();
             $table->string('password');

@@ -17,6 +17,11 @@ columns:
         label: sublimearts.dealers::lang.dealer.company_name
         searchable: true
 
+    group:
+        label: Dealer Group
+        relation: group
+        select: name
+
     email:
         label: sublimearts.dealers::lang.dealer.email
         searchable: true

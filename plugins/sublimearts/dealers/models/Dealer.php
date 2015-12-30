@@ -51,7 +51,7 @@ class Dealer extends DealerBase
     ];
 
     public $belongsTo = [
-        'group' => ['SublimeArts\Dealers\Models\DealerGroup', 'table' => 'sublimearts_dealers_dealers_groups']
+        'group' => ['SublimeArts\Dealers\Models\DealerGroup', 'key' => 'dealers_group_id']
     ];
 
     /**
@@ -94,15 +94,15 @@ class Dealer extends DealerBase
         if ($this->trashed()) {
             $this->last_login = $this->freshTimestamp();
             $this->restore();
-            Mail::sendTo($this, 'rainlab.user::mail.reactivate', [
+            Mail::sendTo($this, 'sublimearts.dealers::mail.reactivate', [
                 'name' => $this->company_name
             ]);
-            Event::fire('rainlab.user.reactivate', [$this]);
+            Event::fire('sublimearts.dealers.reactivate', [$this]);
         }
         else {
             parent::afterLogin();
         }
-        Event::fire('rainlab.user.login', [$this]);
+        Event::fire('sublimearts.dealers.login', [$this]);
     }
 
     /**
@@ -112,7 +112,7 @@ class Dealer extends DealerBase
     public function afterDelete()
     {
         if ($this->isSoftDelete()) {
-            Event::fire('rainlab.user.deactivate', [$this]);
+            Event::fire('sublimearts.dealers.deactivate', [$this]);
             return;
         }
         $this->avatar && $this->avatar->delete();
