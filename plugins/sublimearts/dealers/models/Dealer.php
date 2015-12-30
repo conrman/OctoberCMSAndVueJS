@@ -126,7 +126,7 @@ class Dealer extends DealerBase
 
     public function scopeFilterByGroup($query, $filter)
     {
-        return $query->whereHas('groups', function($group) use ($filter) {
+        return $query->whereHas('group', function($group) use ($filter) {
             $group->whereIn('id', $filter);
         });
     }

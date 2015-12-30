@@ -13,7 +13,7 @@ scopes:
         modelClass: SublimeArts\Dealers\Models\DealerGroup
 
         # Model attribute to display for the name
-        nameFrom: company_name
+        nameFrom: name
 
         # Filter scope
         scope: filterByGroup
