@@ -25,7 +25,7 @@ class Plugin extends PluginBase
             'description' => 'Provides "Dealer" management functionality.',
             'author'      => 'SublimeArts for VerveTronix',
             'homepage'    => 'http://www.sublimearts.me',
-            'icon'        => 'icon-align-justify'
+            'icon'        => 'icon-user'
         ];
     }
 
