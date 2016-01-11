@@ -1,0 +1,60 @@
+description = "Default layout for almost all pages"
+==
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ this.page.title }}</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
+        
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="{{ [
+            'assets/css/bootstrap.css',
+            'assets/css/theme.css',
+            'assets/css/color-defaults.css',
+            'assets/css/swatch-white.css',
+            'assets/css/swatch-blue.css',
+            'assets/css/swatch-gray.css',
+            'assets/css/swatch-black.css',
+            'assets/css/swatch-white-black.css',
+            'assets/css/swatch-white-green.css',
+            'assets/css/swatch-white-red.css',
+            'assets/css/fonts.css',
+            'assets/css/custom.css'
+        ]|theme }}">
+
+    </head>
+    <body class="normal-header pace-on pace-counter">
+        <div class="pace-overlay"></div>
+        
+        {% page %}
+
+        <script src="{{ [
+            'assets/js/packages.js',
+            'assets/js/theme.js',
+            'assets/js/jquery.countdown.js',
+            'assets/js/custom.js'
+        ]|theme }}"></script>
+
+        <script>
+            var finalDate = '2016/01/12';
+            $('div#countdown').countdown(finalDate, {
+                elapse: false    
+            }).on('update.countdown', function(event) {
+                $('span#days').html(event.strftime('%D'));
+                $('span#hours').html(event.strftime('%H'));
+                $('span#minutes').html(event.strftime('%M'));
+                $('span#seconds').html(event.strftime('%S'));
+                $('b#days-text').html(event.strftime('<b>day%!D</b>'));
+                $('b#hours-text').html(event.strftime('<b>hour%!H</b>'));
+                $('b#minutes-text').html(event.strftime('<b>minute%!M</b>'));
+                $('b#seconds-text').html(event.strftime('<b>second%!S</b>'));
+            }).on('finish.countdown', function() {
+
+            });
+        </script>
+
+    </body>
+</html>
