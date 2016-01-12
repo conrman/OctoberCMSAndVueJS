@@ -1,0 +1,37 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    email:
+        label: Email
+        searchable: true
+        sortable: true
+
+    fullname:
+        label: Full Name
+        searchable: true
+        sortable: true
+
+    message:
+        label: Message
+
+    is_subscribed:
+        label: Subscribed?
+        type: switch
+        sortable: true
+
+    subscribed_at:
+        label: Subscribed On
+        type: dateTime
+        mode: Date
+
+    created_at:
+        label: Created On
+        type: dateTime
+        mode: Date
+
+    updated_at:
+        label: Updated On
+        type: dateTime
+        mode: Date

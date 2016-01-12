@@ -4,6 +4,8 @@ layout = "alt-classic-layout"
 description = "Coming Soon | VerveTronix"
 is_hidden = "0"
 meta_title = "Coming Soon | VerveTronix"
+
+[contactForm]
 ==
 <div id="content">
     <article>
@@ -155,24 +157,7 @@ meta_title = "Coming Soon | VerveTronix"
                         </header>
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
-                            <form id="contactForm" class="contact-form">
-                                <div class="form-group form-icon-group">
-                                    <input class="form-control" id="name" name="name" placeholder="Your name *" type="text" required/>
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <div class="form-group form-icon-group">
-                                    <input class="form-control" id="email" name="email" placeholder="Your email *" type="email" required>
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="form-group form-icon-group">
-                                    <textarea class="form-control" id="message" name="message" placeholder="Your message" rows="10" required></textarea>
-                                    <i class="fa fa-pencil"></i>
-                                </div>
-                                <div>
-                                    <input type="submit" value="Send email" class="btn btn-primary">
-                                </div>
-                                <div id="messages"></div>
-                            </form>
+                            {% component "contactForm" %}
                         </div>
                         <div class="col-md-2"></div>
                     </div>

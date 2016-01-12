@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Lead
+
+# Model Form Field configuration
+form: $/sublimearts/forms/models/lead/fields.yaml
+
+# Model Class name
+modelClass: SublimeArts\Forms\Models\Lead
+
+# Default redirect location
+defaultRedirect: sublimearts/forms/leads
+
+# Create page
+create:
+    title: Create Lead
+    redirect: sublimearts/forms/leads/update/:id
+    redirectClose: sublimearts/forms/leads
+
+# Update page
+update:
+    title: Edit Lead
+    redirect: sublimearts/forms/leads
+    redirectClose: sublimearts/forms/leads
+
+# Preview page
+preview:
+    title: Preview Lead

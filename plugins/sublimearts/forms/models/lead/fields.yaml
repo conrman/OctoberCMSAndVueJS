@@ -1,0 +1,37 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    fullname:
+        label: Full Name
+        type: text
+        span: left
+
+    email:
+        label: Email Address
+        type: text
+        span: right
+
+    message:
+        label: Notes / Message / Requirement
+        type: textarea
+        span: left
+
+    is_subscribed:
+        label: Is Subscribed
+        type: checkbox
+        default: unchecked
+        span: right
+
+    subscribed_at:
+        label: Subscribed On
+        type: datepicker
+        invisible: true
+        span: right
+        mode: date
+        default: hide
+        trigger:
+            field: is_subscribed
+            condition: checked
+            action: show
