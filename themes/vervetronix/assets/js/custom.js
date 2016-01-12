@@ -4,7 +4,7 @@ $('#subscriptionForm').on('shown.bs.modal', function () {
 });
 
 // Countdown Timer
-var finalDate = '2016/01/12';
+var finalDate = '2016/01/13';
 $('div#countdown').countdown(finalDate, {
     elapse: false    
 }).on('update.countdown', function(event) {
