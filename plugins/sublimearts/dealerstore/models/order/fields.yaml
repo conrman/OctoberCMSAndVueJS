@@ -1,0 +1,38 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: Order ID
+        disabled: true
+        span: left
+
+    dealer:
+        label: Dealer
+        type: relation
+        select: company_name
+        span: right
+
+    is_shipped:
+        label: Order Shipped?
+        type: switch
+        span: right
+
+    shipping_provider:
+        label: Shipping Provider
+        type: text
+        span: right
+        trigger:
+            action: show
+            field: is_shipped
+            condition: checked
+
+    tracking_number:
+        label: Tracking Number
+        type: text
+        span: right
+        trigger:
+            action: show
+            field: is_shipped
+            condition: checked

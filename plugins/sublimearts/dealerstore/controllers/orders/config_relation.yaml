@@ -1,0 +1,23 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+lineItems:
+    label: Order
+    deferredBinding: true
+    manage:
+        form: $/sublimearts/dealerstore/models/lineitem/fields.yaml
+        list: $/sublimearts/dealerstore/models/lineitem/columns.yaml
+    view:
+        list: $/sublimearts/dealerstore/models/lineitem/columns.yaml
+        toolbarButtons: create|delete
+
+dealer:
+    label: Dealer
+    deferredBinding: true
+    view:
+        form: $/sublimearts/dealers/models/dealer/fields.yaml
+        toolbarButtons: link|unlink
+    manage:
+        form: $/sublimearts/dealers/models/dealer/fields.yaml
+        list: $/sublimearts/dealers/models/dealer/columns.yaml

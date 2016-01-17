@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Product
+
+# Model Form Field configuration
+form: $/sublimearts/dealerstore/models/product/fields.yaml
+
+# Model Class name
+modelClass: SublimeArts\DealerStore\Models\Product
+
+# Default redirect location
+defaultRedirect: sublimearts/dealerstore/products
+
+# Create page
+create:
+    title: Create Product
+    redirect: sublimearts/dealerstore/products/update/:id
+    redirectClose: sublimearts/dealerstore/products
+
+# Update page
+update:
+    title: Edit Product
+    redirect: sublimearts/dealerstore/products
+    redirectClose: sublimearts/dealerstore/products
+
+# Preview page
+preview:
+    title: Preview Product

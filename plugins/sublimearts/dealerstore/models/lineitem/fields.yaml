@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    product:
+        label: Product
+        type: relation
+        select: name
+        span: left
+
+    product:
+        label: Dealer Price
+        type: relation
+        select: dealer_price
+        span: right
+
+    product_qty:
+        label: Order Qty
+        type: number
+        span: right
+
+

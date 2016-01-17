@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Order
+
+# Model Form Field configuration
+form: $/sublimearts/dealerstore/models/order/fields.yaml
+
+# Model Class name
+modelClass: SublimeArts\DealerStore\Models\Order
+
+# Default redirect location
+defaultRedirect: sublimearts/dealerstore/orders
+
+# Create page
+create:
+    title: Create Order
+    redirect: sublimearts/dealerstore/orders/update/:id
+    redirectClose: sublimearts/dealerstore/orders
+
+# Update page
+update:
+    title: Edit Order
+    redirect: sublimearts/dealerstore/orders
+    redirectClose: sublimearts/dealerstore/orders
+
+# Preview page
+preview:
+    title: Preview Order

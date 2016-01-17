@@ -1,0 +1,42 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: Name
+        searchable: true
+        sortable: true
+
+    code:
+        label: Code
+        searchable: true
+        sortable: true
+
+    description:
+        label: Description
+        searchable: true
+        select: concat(substring(description, 1, 150), '...')
+        width: 30%
+
+    fob_price:
+        label: Fob Price
+        type: number
+        sortable: true
+        select: concat('$', fob_price)
+
+    dealer_price:
+        label: Dealer Price
+        type: number
+        sortable: true
+        select: concat('$', dealer_price)
+
+    retail_price:
+        label: Retail Price
+        type: number
+        sortable: true
+        select: concat('$', retail_price)
+
+    is_activated:
+        label: Is Activated
+        type: switch

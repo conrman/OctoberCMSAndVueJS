@@ -1,0 +1,39 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        span: left
+
+    code:
+        label: Code
+        preset: name
+        span: right
+
+    description:
+        label: Description
+        type: richeditor
+        size: large
+        span: left
+
+    fob_price:
+        label: FOB Price
+        type: number
+        span: right
+
+    dealer_price:
+        label: Dealer Price
+        type: number
+        span: right
+
+    retail_price:
+        label: Retail Price
+        type: number
+        span: right
+
+    is_activated:
+        label: Is Activated
+        type: switch
+

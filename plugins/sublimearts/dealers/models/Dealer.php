@@ -46,6 +46,10 @@ class Dealer extends DealerBase
         'info' => 'SublimeArts\Dealers\Models\Info'
     ];
 
+    public $hasMany = [
+        'orders' => 'SublimeArts\DealerStore\Models\Order'
+    ];
+
     public $attachOne = [
         'avatar' => ['System\Models\File']
     ];

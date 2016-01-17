@@ -1,0 +1,19 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    product:
+        label: Product Name
+        relation: product
+        select: name
+
+    product_qty:
+        label: Qty
+        type: number
+
+    product:
+        label: Dealer Price
+        relation: product
+        select: dealer_price

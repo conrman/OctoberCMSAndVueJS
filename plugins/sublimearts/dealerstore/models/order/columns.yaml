@@ -1,0 +1,36 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    dealer:
+        label: Dealer
+        relation: dealer
+        select: company_name
+        sortable: true
+        searchable: true
+
+    total_value:
+        label: Order Value
+        type: number
+        select: concat('$', total_value)
+        sortable: true
+        searchable: true
+
+    is_shipped:
+        label: Shipped?
+        type: switch
+        sortable: true
+        searchable: true
+
+    shipping_provider:
+        label: Shipped Thru
+        type: text
+        sortable: true
+        searchable: true
+
+    tracking_number:
+        label: Tracking Number
+        type: text
+        sortable: true
+        searchable: true

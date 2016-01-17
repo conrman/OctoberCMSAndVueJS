@@ -1,0 +1,7 @@
+1.0.1: First version of DealerStore
+1.0.2:
+    - Create required database tables
+    - create_products_table.php
+    - create_line_items_table.php
+    - create_orders_table.php
+    - seed_products_table.php
