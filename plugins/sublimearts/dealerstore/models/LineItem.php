@@ -19,7 +19,8 @@ class LineItem extends Model
      */
     protected $fillable = [
         'product_id',
-        'product_qty'
+        'product_qty',
+        'value'
     ];
 
     /**
@@ -29,5 +30,10 @@ class LineItem extends Model
         'product' => 'SublimeArts\DealerStore\Models\Product',
         'order' => 'SublimeArts\DealerStore\Models\Order'
     ];
+
+    public function beforeSave()
+    {
+        $this->value = $this->product->dealer_price * $this->product_qty;
+    }
 
 }

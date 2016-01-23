@@ -33,5 +33,21 @@ class Product extends Model
     public $hasMany = [
         'lineItems' => 'SublimeArts\DealerStore\Models\LineItem'
     ];
-    
+
+    public $attachOne = [
+        'thumbnail_image' => 'System\Models\File'
+    ];
+
+    public $attachMany = [
+        'product_images' => 'System\Models\File',
+        'lifestyle_images' => 'System\Models\File'
+    ];
+
+
+    public function getThumbnailAttribute()
+    {
+        $thumbUrl = $this->thumbnail_image->getThumb(100, 100, ['crop']);
+        return '<img src="' . $thumbUrl . '" alt="' . $this->name . '" />';
+    }
+   
 }

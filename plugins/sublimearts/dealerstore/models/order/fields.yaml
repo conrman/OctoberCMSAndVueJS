@@ -3,10 +3,12 @@
 # ===================================
 
 fields:
-    id:
-        label: Order ID
+
+    total_value:
+        label: Order Total in $ (This updates AFTER SAVE)
         disabled: true
         span: left
+        select: concat('$', sum(value))
 
     dealer:
         label: Dealer
@@ -14,10 +16,24 @@ fields:
         select: company_name
         span: right
 
+    id:
+        label: Order ID
+        disabled: true
+        span: left
+
     is_shipped:
         label: Order Shipped?
         type: switch
         span: right
+
+    shipped_on:
+        label: Shipping Date
+        type: datepicker
+        span: right 
+        trigger:
+            action: show
+            field: is_shipped
+            condition: checked
 
     shipping_provider:
         label: Shipping Provider

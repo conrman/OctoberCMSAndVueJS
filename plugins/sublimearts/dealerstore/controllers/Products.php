@@ -19,7 +19,6 @@ class Products extends Controller
     public function __construct()
     {
         parent::__construct();
-
         BackendMenu::setContext('SublimeArts.DealerStore', 'dealerstore', 'products');
     }
 }

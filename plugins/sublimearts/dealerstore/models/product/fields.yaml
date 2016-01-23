@@ -37,3 +37,24 @@ fields:
         label: Is Activated
         type: switch
 
+    thumbnail_image:
+        label: Thumbnail Image
+        type: fileupload
+        mode: image
+        span: left
+        imageWidth: 100
+        imageHeight: 100
+
+    product_images:
+        label: Product Images
+        type: fileupload
+        mode: image
+        span: right
+
+
+    lifestyle_images:
+        label: LifeStyle Images
+        type: fileupload
+        mode: image
+        span: right
+

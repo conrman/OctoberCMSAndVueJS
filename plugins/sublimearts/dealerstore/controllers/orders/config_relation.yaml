@@ -3,7 +3,7 @@
 # ===================================
 
 lineItems:
-    label: Order
+    label: Line Item
     deferredBinding: true
     manage:
         form: $/sublimearts/dealerstore/models/lineitem/fields.yaml

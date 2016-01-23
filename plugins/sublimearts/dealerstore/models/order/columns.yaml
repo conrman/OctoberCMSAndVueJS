@@ -23,6 +23,11 @@ columns:
         sortable: true
         searchable: true
 
+    shipped_on:
+        label: Shipped On
+        type: datetime
+        mode: date
+
     shipping_provider:
         label: Shipped Thru
         type: text

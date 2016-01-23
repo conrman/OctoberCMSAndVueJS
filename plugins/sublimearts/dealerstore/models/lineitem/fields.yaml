@@ -10,15 +10,17 @@ fields:
         select: name
         span: left
 
-    product:
-        label: Dealer Price
-        type: relation
-        select: dealer_price
-        span: right
-
     product_qty:
         label: Order Qty
         type: number
         span: right
+
+    product:
+        label: Value
+        span: left
+        disabled: true
+        type: relation
+        select: dealer_price
+
 
 

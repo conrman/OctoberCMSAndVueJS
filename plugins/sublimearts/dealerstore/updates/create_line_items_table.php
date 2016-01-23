@@ -16,6 +16,7 @@ class CreateLineItemsTable extends Migration
             $table->integer('order_id')->unsigned()->nullable();
             $table->integer('product_id')->unsigned()->nullable();
             $table->integer('product_qty');
+            $table->float('value');
 
             $table->timestamps();
         });

@@ -3,6 +3,12 @@
 # ===================================
 
 columns:
+    thumbnail:
+        label: Thumbnail
+        type: html
+        searchable: false
+        sortable: false
+
     name:
         label: Name
         searchable: true

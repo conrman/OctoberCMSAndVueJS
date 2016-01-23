@@ -13,7 +13,12 @@ columns:
         label: Qty
         type: number
 
-    product:
-        label: Dealer Price
+    unit_price:
+        label: Unit Price
         relation: product
-        select: dealer_price
+        select: concat('$', dealer_price)
+
+    value:
+        label: Sub-Total
+        type: number
+        select: concat('$', value)

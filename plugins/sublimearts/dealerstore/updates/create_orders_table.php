@@ -16,8 +16,9 @@ class CreateOrdersTable extends Migration
             $table->integer('dealer_id')->unsigned()->nullable();
             $table->integer('total_value')->nullable();
             $table->boolean('is_shipped')->default(0);
-            $table->string('shipping_provider')->nullable();
-            $table->string('tracking_number')->unique()->nullable();
+            $table->timestamp('shipped_on')->nullable();
+            $table->string('shipping_provider')->default('N/A');
+            $table->string('tracking_number')->default('N/A');
 
             $table->timestamps();
         });

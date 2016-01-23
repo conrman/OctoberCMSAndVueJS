@@ -2,6 +2,7 @@
 
 use BackendMenu;
 use Backend\Classes\Controller;
+use SublimeArts\DealerStore\Models\LineItem;
 
 /**
  * Orders Back-end Controller
