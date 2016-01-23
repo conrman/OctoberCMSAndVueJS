@@ -46,7 +46,12 @@ class Product extends Model
 
     public function getThumbnailAttribute()
     {
-        $thumbUrl = $this->thumbnail_image->getThumb(100, 100, ['crop']);
+        if($this->thumbnail_image) {
+            $thumbUrl = $this->thumbnail_image->getThumb(100, 100, ['crop']);
+        } else {
+            $thumbUrl = 'http://placehold.it/100x100';
+        }
+        
         return '<img src="' . $thumbUrl . '" alt="' . $this->name . '" />';
     }
    
