@@ -4,6 +4,7 @@
     - create_dealers_table.php
     - create_dealer_groups_table.php
     - seed_dealer_groups_table.php
+    - seed_dealers_table.php
     - create_info_table.php
     - create_mail_blockers_table.php
     - create_settings_table.php

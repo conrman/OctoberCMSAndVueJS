@@ -4,7 +4,6 @@
 
 lineItems:
     label: Line Item
-    deferredBinding: true
     manage:
         form: $/sublimearts/dealerstore/models/lineitem/fields.yaml
         list: $/sublimearts/dealerstore/models/lineitem/columns.yaml
@@ -14,7 +13,6 @@ lineItems:
 
 dealer:
     label: Dealer
-    deferredBinding: true
     view:
         form: $/sublimearts/dealers/models/dealer/fields.yaml
         toolbarButtons: link|unlink

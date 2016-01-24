@@ -15,12 +15,5 @@ fields:
         type: number
         span: right
 
-    product:
-        label: Value
-        span: left
-        disabled: true
-        type: relation
-        select: dealer_price
-
 
 

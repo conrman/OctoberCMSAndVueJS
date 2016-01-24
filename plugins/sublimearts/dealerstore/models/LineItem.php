@@ -1,6 +1,6 @@
 <?php namespace SublimeArts\DealerStore\Models;
 
-use Model;
+use Model, Log;
 
 /**
  * LineItem Model
@@ -31,9 +31,28 @@ class LineItem extends Model
         'order' => 'SublimeArts\DealerStore\Models\Order'
     ];
 
-    public function beforeSave()
+    public function updateLineValue() 
     {
         $this->value = $this->product->dealer_price * $this->product_qty;
+    }
+
+    public function beforeSave()
+    {
+        $this->updateLineValue();
+    }
+
+    public function afterSave()
+    {
+        if($this->order) {
+            $this->order->updateTotal();
+        }
+    }
+
+    public function onLineItemAdd()
+    {
+        if($this->order) {
+            $this->order->updateTotal();
+        }
     }
 
 }

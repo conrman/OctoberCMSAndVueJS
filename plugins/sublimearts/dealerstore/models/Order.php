@@ -1,6 +1,6 @@
 <?php namespace SublimeArts\DealerStore\Models;
 
-use Model;
+use Model, Log;
 use SublimeArts\DealerStore\Models\LineItem;
 
 /**
@@ -45,18 +45,16 @@ class Order extends Model
         ]
     ];
 
-    public function beforeSave() {
+    public function updateTotal()
+    {
         $lineItems = $this->lineItems;
         $this->total_value = 0;
         
         foreach($lineItems as $lineItem) {
             $this->total_value += $lineItem->value;
         }
+
+        $this->save();
     }
 
-    public function afterSave() {
-        // Delete any Orphan LineItems
-        LineItem::where('order_id', null)->delete();
-    }
-    
 }
