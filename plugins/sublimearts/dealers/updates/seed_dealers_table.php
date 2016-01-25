@@ -18,7 +18,8 @@ class SeedDealersTable extends Seeder
             'password_confirmation' => $password,
             'is_activated' => true,
             'activated_at' => Carbon::now(),
-            'membership_requested_at' => Carbon::now()
+            'membership_requested_at' => Carbon::now(),
+            'phone' => '+1 123 456 7890'
         ]);
 
         Dealer::create([
@@ -30,7 +31,8 @@ class SeedDealersTable extends Seeder
             'password_confirmation' => $password,
             'is_activated' => true,
             'activated_at' => Carbon::now(),
-            'membership_requested_at' => Carbon::now()
+            'membership_requested_at' => Carbon::now(),
+            'phone' => '+1 098 765 4321'
         ]);
     }
 }

@@ -27,6 +27,21 @@ class CreateDealersTable extends Migration
             $table->timestamp('membership_requested_at')->nullable();
             $table->timestamp('last_login')->nullable();
 
+            $table->integer('country_id')->unsigned()->nullable()->index();
+            $table->integer('state_id')->unsigned()->nullable()->index();
+            $table->string('country')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('province')->nullable();
+            $table->string('street_address')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('phone')->unique()->notnull();
+            $table->string('contact_person_first_name')->nullable();
+            $table->string('contact_person_last_name')->nullable();
+            $table->string('contact_person_designation')->nullable();
+            $table->string('contact_person_email')->nullable();
+            $table->string('contact_person_phone')->nullable();
+
             $table->timestamps();
         });
     }

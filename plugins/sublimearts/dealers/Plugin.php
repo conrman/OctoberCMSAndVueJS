@@ -29,6 +29,8 @@ class Plugin extends PluginBase
         ];
     }
 
+    public $require = ['RainLab.Location'];
+
     public function register()
     {
         $alias = AliasLoader::getInstance();

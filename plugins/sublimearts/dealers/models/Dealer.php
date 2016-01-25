@@ -28,6 +28,8 @@ class Dealer extends DealerBase
         'password_confirmation' => 'required_with:password|between:4,255'
     ];
 
+    public $implement = ['RainLab.Location.Behaviors.LocationModel'];
+    
     /**
      * @var array The attributes that are mass assignable.
      */
@@ -36,14 +38,21 @@ class Dealer extends DealerBase
         'email',
         'company_name',
         'password',
-        'password_confirmation'
-    ];
-
-    /**
-     * @var array Relations
-     */
-    public $hasOne = [
-        'info' => 'SublimeArts\Dealers\Models\Info'
+        'password_confirmation',
+        'country_id',
+        'state_id',
+        'country',
+        'state',
+        'city',
+        'province',
+        'street_address',
+        'zip_code',
+        'phone',
+        'contact_person_first_name',
+        'contact_person_last_name',
+        'contact_person_designation',
+        'contact_person_email',
+        'contact_person_phone'
     ];
 
     public $hasMany = [

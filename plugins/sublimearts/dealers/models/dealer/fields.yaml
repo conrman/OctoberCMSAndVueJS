@@ -6,46 +6,130 @@ fields:
 
     company_name:
         label: sublimearts.dealers::lang.dealer.company_name
-        span: auto
+        span: left 
+
+    username:
+        label: Username (used for logging in)
+        span: right
+
 
 tabs:
     fields:
 
         email:
             label: sublimearts.dealers::lang.dealer.email
-            tab: sublimearts.dealers::lang.dealer.account
+            tab: Account Info
             span: full
 
         password:
             label: sublimearts.dealers::lang.dealer.reset_password
             comment: sublimearts.dealers::lang.dealer.reset_password_comment
-            tab: sublimearts.dealers::lang.dealer.account
+            tab: Account Info
             type: password
             span: left
 
         password_confirmation:
             label: sublimearts.dealers::lang.dealer.confirm_password
             comment: sublimearts.dealers::lang.dealer.confirm_password_comment
-            tab: sublimearts.dealers::lang.dealer.account
+            tab: Account Info
             type: password
             span: right
 
-        username:
-            label: sublimearts.dealers::lang.dealer.username
-            hidden: true
-            span: left
-
         group:
             label: sublimearts.dealers::lang.dealer.groups
-            tab: sublimearts.dealers::lang.dealer.account
+            tab: Account Info
             type: relation
             emptyOption: sublimearts.dealers::lang.dealer.empty_groups
+
+
+        phone:
+            tab: Contact Info
+            label:  Company Phone Number
+            span: left
+
+        contact_person_first_name:
+            tab: Contact Info
+            label: Contact Person First Name
+            span: left
+
+        contact_person_last_name:
+            tab: Contact Info
+            label: Contact Person Last Name
+            span: right
+
+        contact_person_designation:
+            tab: Contact Info
+            label: Contact Person Designation
+            span: left
+
+        contact_person_phone:
+            tab: Contact Info
+            label: Contact Person Phone
+            span: right
+
+        contact_person_email:
+            tab: Contact Info
+            label: Contact Person Email
+            span: left
+
+        address:
+            label: Address
+            tab: Location Info
+            type: addressfinder
+            fieldMap:
+                latitude: latitude
+                longitude: longitude
+                city: city
+                zip: zipcode
+                country: country
+                state: state
+                street: street_address
+
+        country:
+            label: Country
+            type: dropdown
+            placeholder: -- select --
+            tab: Location Info
+            span: left
+
+        state:
+            label: State
+            type: dropdown
+            placeholder: -- select --
+            tab: Location Info
+            span: right
+
+        city:
+            label: City
+            type: text
+            tab: Location Info
+            span: left
+
+        province:
+            label: Province | Area | Locality
+            type: text
+            tab: Location Info
+            span: right
+
+        street_address:
+            label: Street Address
+            type: text            
+            tab: Location Info
+            span: left
+
+        zipcode:
+            label: Zipcode
+            type: text
+            tab: Location Info
+            span: right
+
+
 
 secondaryTabs:
     fields:
 
         avatar:
-            label: sublimearts.dealers::lang.dealer.avatar
+            label: Avatar | Profile Image
             type: fileupload
             mode: image
             imageHeight: 260
