@@ -39,3 +39,13 @@ columns:
         type: text
         sortable: true
         searchable: true
+
+    created_at:
+        label: Received On
+        type: datetime
+        mode: date
+
+    updated_at:
+        label: Last Changed
+        type: datetime
+        mode: date

@@ -34,7 +34,8 @@ class Plugin extends PluginBase
     {
         return [
             'SublimeArts\Forms\Components\ContactForm'      => 'contactForm',
-            'SublimeArts\Forms\Components\SubscriptionForm' => 'subscriptionForm'
+            'SublimeArts\Forms\Components\SubscriptionForm' => 'subscriptionForm',
+            'SublimeArts\Forms\Components\DealershipRequestForm' => 'dealershipRequestForm'
         ];
     }
 

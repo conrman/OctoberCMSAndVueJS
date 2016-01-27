@@ -3,6 +3,15 @@ $('#subscriptionForm').on('shown.bs.modal', function () {
     $('#emailInput').focus()
 });
 
+// Dealership request Form Modal
+$('#dealershipRequestForm').on('shown.bs.modal', function () {
+    $('#company_name').focus()
+});
+
+$('#dealershipRequestForm button#submit').on('click', function() {
+    ('#dealershipRequestForm').modal('hide');
+})
+
 // Countdown Timer
 var finalDate = '2016/01/13';
 $('div#countdown').countdown(finalDate, {

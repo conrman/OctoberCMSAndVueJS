@@ -3,7 +3,14 @@ div#flashmessages {
   position: fixed;
   top: 1em;
   right: 1em;
-  z-index: 5000;
+  z-index: 6000;
 }
 
 /********************* FLASH MESSAGES *********************/
+
+
+/********************* MODEL FORMS *********************/
+.modal-body {
+    background: #ECEBF1;
+}
+/********************* MODEL FORMS *********************/

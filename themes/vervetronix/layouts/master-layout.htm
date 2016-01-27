@@ -29,6 +29,9 @@ description = "Default layout for almost all pages"
     <body class="transparent-header pace-on pace-counter" id="vue-app">
         <div class="pace-overlay"></div>
         
+        <!-- Flash Messaging -->
+        <div id="flashmessages">{% partial "flash-message" %}</div>
+        
         {% page %}
 
         <script src="{{ [

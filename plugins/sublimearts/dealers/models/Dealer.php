@@ -24,8 +24,8 @@ class Dealer extends DealerBase
     public $rules = [
         'email'    => 'required|between:6,255|email|unique:sublimearts_dealers_dealers',
         'username' => 'required|between:2,255|unique:sublimearts_dealers_dealers',
-        'password' => 'required:create|between:4,255|confirmed',
-        'password_confirmation' => 'required_with:password|between:4,255'
+        // 'password' => 'required:create|between:4,255|confirmed',
+        // 'password_confirmation' => 'required_with:password|between:4,255'
     ];
 
     public $implement = ['RainLab.Location.Behaviors.LocationModel'];

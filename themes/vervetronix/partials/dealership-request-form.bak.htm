@@ -1,0 +1,46 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="dealershipRequestForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Dealership Request Form</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="element-short-bottom">
+                    Please fill in the following details and we will be in touch in a jiffy.
+                </h4>
+                <form onsubmit="$(this).request('{{ __SELF__ }}::onSubmit'); return false;">
+                    <div class="form-group">
+                        <input class="form-control" id="company_name" name="company_name" placeholder="Company / Business Name *" type="text" required/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="company_email" name="company_email" placeholder="Company / Business Email *" type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="company_phone" name="company_phone" placeholder="Company / Business Phone *" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="username" name="username" placeholder="Username (used for logins) *" type="text" required>
+                    </div>
+                    
+                    <!-- <div id="partialCountryState">
+                        {% partial 'country-state' countryId=user.country_id stateId=user.state_id %}
+                    </div> -->
+                    
+                    <div class="form-group">
+                        <input class="form-control" id="country" name="country" placeholder="Country *" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="state" name="state" placeholder="State *" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="city" name="city" placeholder="City *" type="text" required>
+                    </div>
+                    <div>
+                        <button id="submit" type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
