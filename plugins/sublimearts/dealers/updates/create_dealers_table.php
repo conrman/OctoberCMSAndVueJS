@@ -35,6 +35,7 @@ class CreateDealersTable extends Migration
             $table->string('province')->nullable();
             $table->string('street_address')->nullable();
             $table->string('zip_code')->nullable();
+            $table->string('address_finder')->nullable();
             $table->string('phone')->unique()->notnull();
             $table->string('contact_person_first_name')->nullable();
             $table->string('contact_person_last_name')->nullable();

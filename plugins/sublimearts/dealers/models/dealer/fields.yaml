@@ -72,7 +72,7 @@ tabs:
             label: Contact Person Email
             span: left
 
-        address:
+        address_finder:
             label: Address
             tab: Location Info
             type: addressfinder
@@ -80,7 +80,7 @@ tabs:
                 latitude: latitude
                 longitude: longitude
                 city: city
-                zip: zipcode
+                zip: zip_code
                 country: country
                 state: state
                 street: street_address
@@ -118,7 +118,7 @@ tabs:
             tab: Location Info
             span: left
 
-        zipcode:
+        zip_code:
             label: Zipcode
             type: text
             tab: Location Info

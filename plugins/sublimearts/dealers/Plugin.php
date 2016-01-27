@@ -34,10 +34,10 @@ class Plugin extends PluginBase
     public function register()
     {
         $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', 'SublimeArts\Models\Facades\Auth');
+        $alias->alias('Auth', 'SublimeArts\Dealers\Facades\Auth');
 
         App::singleton('dealer.auth', function() {
-            return \SublimeArts\Models\Classes\AuthManager::instance();
+            return \SublimeArts\Dealers\Classes\AuthManager::instance();
         });
 
         /*

@@ -30,6 +30,10 @@ columns:
         label: sublimearts.dealers::lang.dealer.created_at
         type: datetime
 
+    membership_requested_at:
+        label: Requested On
+        type: datetime
+
     is_activated:
         label: Activated?
         type: switch

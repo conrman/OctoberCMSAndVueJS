@@ -48,11 +48,17 @@ class Dealer extends DealerBase
         'street_address',
         'zip_code',
         'phone',
+        'membership_requested_at',
         'contact_person_first_name',
         'contact_person_last_name',
         'contact_person_designation',
         'contact_person_email',
         'contact_person_phone'
+    ];
+
+    protected $dates = [
+        'membership_requested_at',
+        'activated_at'
     ];
 
     public $hasMany = [

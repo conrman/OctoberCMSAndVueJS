@@ -3,6 +3,7 @@
 use Cms\Classes\ComponentBase;
 use SublimeArts\Dealers\models\Dealer;
 use Log, Flash, Mail, Redirect;
+use Carbon\Carbon;
 
 class DealershipRequestForm extends ComponentBase
 {
@@ -38,6 +39,7 @@ class DealershipRequestForm extends ComponentBase
             $dealer->state = $state;
             $dealer->city = $city;
             $dealer->phone = $phone;
+            $dealer->membership_requested_at = Carbon::now();
             $dealer->save();
 
             if($dealer->save()) {
