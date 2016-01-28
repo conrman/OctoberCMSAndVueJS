@@ -1,0 +1,83 @@
+title = "Dealer Home | VerveTronix"
+url = "/dealers/home"
+layout = "master-layout"
+description = "Dealer Home | VerveTronix"
+is_hidden = "0"
+meta_title = "Dealer Home | VerveTronix"
+
+==
+{% partial "trans-header" %}
+
+<script type="text/javascript">
+var oxyThemeData = {
+    navbarHeight: 90,
+    navbarScrolled: 70,
+    navbarScrolledPoint: 200,
+    navbarScrolledSwatches:
+    {
+        up: 'swatch-black',
+        down: 'swatch-white'
+    },
+    scrollFinishedMessage: 'No more items to load.',
+    hoverMenu:
+    {
+        hoverActive: true,
+        hoverDelay: 1,
+        hoverFadeDelay: 200
+    }
+};
+</script>
+
+<div id="content">
+    <article>
+        <section class="section swatch-blue section-text-shadow section-inner-shadow">
+            <div class="background-media" style="background-image: url('{{ 'assets/images/uploads/image-02-normal.jpg'|theme }}'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; background-position: 50% 0%;" data-start="background-position:"
+            data-70-top-bottom="background-position:">
+            </div>
+            <div class="background-overlay grid-overlay-20 " style="background-color: rgba(0,0,0,0.4);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="text-center element-tall-top element-tall-bottom condensed">
+                            <h1 class="super hairline bordered-normal">
+                                Dealer Home
+                            </h1>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="two" class="section swatch-white">
+            <div class="container">
+                <div class="row element-tall-top element-tall-bottom">
+                    <div class="col-md-6 col-md-offset-3">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section swatch-black section-text-shadow section-inner-shadow">
+            <div class="background-overlay grid-overlay-0 " style="background-color: rgba(123,86,159,1);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <header class="text-center element-tall-top element-no-bottom os-animation condensed" data-os-animation="fadeIn" data-os-animation-delay=".0s">
+                            <h1 class="bigger hairline bordered bordered-normal">
+                                Having Trouble Signing In?
+                            </h1>
+                            <p class="lead">
+                                Please feel free to reach out to us thru this.
+                            </p>
+                        </header>
+                        <a href="#" class="btn btn-primary btn-lg element-short-top element-tall-bottom btn-custom os-animation" target="_blank" data-os-animation="fadeInUp" data-os-animation-delay="0.3s ">
+                            Reach Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    {% partial "simple-footer" %}
+</div>

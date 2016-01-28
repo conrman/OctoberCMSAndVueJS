@@ -130,10 +130,11 @@ class Dealer extends DealerBase
      */
     public function afterDelete()
     {
-        if ($this->isSoftDelete()) {
-            Event::fire('sublimearts.dealers.deactivate', [$this]);
-            return;
-        }
+            if ($this->isSoftDelete()) {
+                Event::fire('sublimearts.dealers.deactivate', [$this]);
+                return;
+            }
+
         $this->avatar && $this->avatar->delete();
         parent::afterDelete();
     }

@@ -1,4 +1,6 @@
 description = "Default layout for almost all pages"
+
+[dealerSession]
 ==
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +30,11 @@ description = "Default layout for almost all pages"
     </head>
     <body class="normal-header pace-on pace-counter">
         <div class="pace-overlay"></div>
+
+        <!-- Flash Messaging -->
+        <div id="flashmessages">{% partial "flash-message" %}</div>
+
+        {% component "dealerSession" %}
         
         {% page %}
 

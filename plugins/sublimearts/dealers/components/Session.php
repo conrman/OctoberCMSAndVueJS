@@ -8,6 +8,7 @@ use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use ValidationException;
+use SublimeArts\Dealers\Models\Dealer;
 
 class Session extends ComponentBase
 {
@@ -33,7 +34,7 @@ class Session extends ComponentBase
                 'default'     => 'all',
                 'options'     => [
                     'all'   => 'sublimearts.dealers::lang.session.all',
-                    'user'  => 'sublimearts.dealers::lang.session.users',
+                    'user'  => 'sublimearts.dealers::lang.session.dealers',
                     'guest' => 'sublimearts.dealers::lang.session.guests'
                 ]
             ],
@@ -68,6 +69,7 @@ class Session extends ComponentBase
         }
 
         $this->page['dealer'] = $this->dealer();
+
     }
 
     /**

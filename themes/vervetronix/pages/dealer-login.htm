@@ -1,0 +1,105 @@
+title = "Dealer Login | VerveTronix"
+url = "/dealers/login"
+layout = "master-layout"
+description = "Dealer Login | VerveTronix"
+is_hidden = "0"
+meta_title = "Dealer Login | VerveTronix"
+
+[dealershipRequestForm]
+[dealerAccount]
+==
+{% partial "trans-header" %}
+
+<script type="text/javascript">
+var oxyThemeData = {
+    navbarHeight: 90,
+    navbarScrolled: 70,
+    navbarScrolledPoint: 200,
+    navbarScrolledSwatches:
+    {
+        up: 'swatch-black',
+        down: 'swatch-white'
+    },
+    scrollFinishedMessage: 'No more items to load.',
+    hoverMenu:
+    {
+        hoverActive: true,
+        hoverDelay: 1,
+        hoverFadeDelay: 200
+    }
+};
+</script>
+
+<div id="content">
+    <article>
+        <section class="section swatch-blue section-text-shadow section-inner-shadow">
+            <div class="background-media" style="background-image: url('{{ 'assets/images/uploads/image-02-normal.jpg'|theme }}'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; background-position: 50% 0%;" data-start="background-position:"
+            data-70-top-bottom="background-position:">
+            </div>
+            <div class="background-overlay grid-overlay-20 " style="background-color: rgba(0,0,0,0.4);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="text-center element-tall-top element-tall-bottom condensed">
+                            <h1 class="super hairline bordered-normal">
+                                Dealer Login
+                            </h1>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section swatch-white">
+            <div class="container">
+                <div class="row element-tall-top element-tall-bottom">
+                    <div class="col-md-6 text-right">
+                        <ul class="hairline big" style="list-style: none">
+                            <li class="os-animation element-short-top" data-os-animation="fadeIn" data-os-animation-delay=".2s">
+                                Orders and shipment tracking.
+                                <i class="fa fa-check os-animation" data-os-animation="fadeIn" data-os-animation-delay=".2s" style="color:#7C54A1;"></i>
+                            </li>
+                            <li class="os-animation element-short-top" data-os-animation="fadeIn" data-os-animation-delay=".2s">
+                                Special discounts and offers.
+                                <i class="fa fa-check os-animation" data-os-animation="fadeIn" data-os-animation-delay=".2s" style="color:#7C54A1;"></i>
+                            </li>
+                            <li class="os-animation element-short-top" data-os-animation="fadeIn" data-os-animation-delay=".2s">
+                                Great downloadable resources.
+                                <i class="fa fa-check os-animation" data-os-animation="fadeIn" data-os-animation-delay=".2s" style="color:#7C54A1;"></i>
+                            </li>
+                            <li class="os-animation element-short-top" data-os-animation="fadeIn" data-os-animation-delay=".2s">
+                                Darn quick issue resolution.
+                                <i class="fa fa-check os-animation" data-os-animation="fadeIn" data-os-animation-delay=".2s" style="color:#7C54A1;"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        {% component "dealerAccount" %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section swatch-black section-text-shadow section-inner-shadow">
+            <div class="background-overlay grid-overlay-0 " style="background-color: rgba(123,86,159,1);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <header class="text-center element-tall-top element-no-bottom os-animation condensed" data-os-animation="fadeIn" data-os-animation-delay=".0s">
+                            <h1 class="bigger hairline bordered bordered-normal">
+                                Want to be a dealer?
+                            </h1>
+                            <p class="lead">
+                                Please feel free to reach out to us thru this.
+                            </p>
+                        </header>
+                        <a href="{{ 'dealership'|page }}" class="btn btn-primary btn-lg element-short-top element-tall-bottom btn-custom os-animation" target="_blank" data-os-animation="fadeInUp" data-os-animation-delay="0.3s ">
+                            Reach Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    {% partial "simple-footer" %}
+</div>
