@@ -1,6 +1,7 @@
 description = "Default layout for almost all pages"
 
 [dealerSession]
+[productDisplay]
 ==
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +25,8 @@ description = "Default layout for almost all pages"
             'assets/css/swatch-white-green.css',
             'assets/css/swatch-white-red.css',
             'assets/css/fonts.css',
-            'assets/css/custom.css',
+            'assets/css/revolution.css',
+            'assets/css/custom.css'
         ]|theme }}">
 
     </head>
@@ -41,10 +43,43 @@ description = "Default layout for almost all pages"
         <script src="{{ [
             'assets/js/packages.js',
             'assets/js/theme.js',
+            'assets/js/revolution.js',
             'assets/js/custom.js'
         ]|theme }}"></script>
         
         {% framework extras %}
+
+        <!-- Revolution Slider -->
+        <script type="text/javascript">
+        jQuery(document).ready(function()
+        {
+            jQuery('.tp-banner').show().revolution(
+            {
+                delay: 4000,
+                onHoverStop: "on", // Stop Banner Timer at Hover on Slide on/off
+                thumbWidth: 50, // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+                thumbHeight: 50,
+                thumbAmount: 3,
+                hideThumbs: 0,
+                navigationType: "bullet", // bullet, thumb, none
+                navigationArrows: "none", // nexttobullets, solo (old name verticalcentered), none
+                navigationStyle: "square", // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+                navigationHAlign: "center", // Vertical Align top,center,bottom
+                navigationVAlign: "bottom", // Horizontal Align left,center,right
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+                touchenabled: "on", // Enable Swipe Function : on/off
+                stopAtSlide: -1, // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+                stopAfterLoops: -1, // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+                hideCaptionAtLimit: 0, // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+                hideAllCaptionAtLilmit: 0, // Hide all The Captions if Width of Browser is less then this value
+                hideSliderAtLimit: 0, // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+                fullWidth: "off",
+                shadow: 0
+            });
+        });
+        </script>
+        <!-- Revolution Slider -->
 
         <!-- Google Analytics -->
         <script>

@@ -22,6 +22,7 @@ columns:
     description:
         label: Description
         searchable: true
+        type: html
         select: concat(substring(description, 1, 150), '...')
         width: 30%
 

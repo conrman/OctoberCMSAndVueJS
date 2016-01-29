@@ -34,10 +34,9 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
-
+     
         return [
-            'SublimeArts\DealerStore\Components\MyComponent' => 'myComponent',
+            'SublimeArts\DealerStore\Components\ProductDisplay' => 'productDisplay',
         ];
     }
 

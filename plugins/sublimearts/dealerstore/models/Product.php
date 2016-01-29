@@ -54,5 +54,10 @@ class Product extends Model
         
         return '<img src="' . $thumbUrl . '" alt="' . $this->name . '" />';
     }
+
+    public function scopeIsActivated($query)
+    {
+        return $query->where('is_activated', 1);
+    }
    
 }
