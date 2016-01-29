@@ -24,7 +24,7 @@ columns:
         searchable: true
         type: html
         select: concat(substring(description, 1, 150), '...')
-        width: 30%
+        width: 25%
 
     fob_price:
         label: Fob Price

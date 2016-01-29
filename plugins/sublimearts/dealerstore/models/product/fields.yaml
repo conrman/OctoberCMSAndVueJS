@@ -19,17 +19,17 @@ fields:
         span: left
 
     fob_price:
-        label: FOB Price
+        label: FOB Price (US$)
         type: number
         span: right
 
     dealer_price:
-        label: Dealer Price
+        label: Dealer Price (US$)
         type: number
         span: right
 
     retail_price:
-        label: Retail Price
+        label: Retail Price (US$)
         type: number
         span: right
 

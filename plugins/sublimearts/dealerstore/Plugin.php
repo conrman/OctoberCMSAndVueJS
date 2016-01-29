@@ -62,7 +62,7 @@ class Plugin extends PluginBase
     {
         return [
             'dealerstore' => [
-                'label'       => 'Dealer Store',
+                'label'       => 'Shop',
                 'url'         => Backend::url('sublimearts/dealerstore/products'),
                 'icon'        => 'icon-money',
                 'permissions' => ['sublimearts.dealerstore.*'],
