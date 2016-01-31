@@ -5,16 +5,16 @@
 columns:
 
     id:
-        label: sublimearts.dealers::lang.dealer.id
+        label: ID
         invisible: true
 
     username:
-        label: sublimearts.dealers::lang.dealer.username
+        label: Username
         searchable: true
         invisible: true
 
     company_name:
-        label: sublimearts.dealers::lang.dealer.company_name
+        label: Company Name
         searchable: true
 
     group:
@@ -23,16 +23,21 @@ columns:
         select: name
 
     email:
-        label: sublimearts.dealers::lang.dealer.email
+        label: Company Email
         searchable: true
 
     created_at:
-        label: sublimearts.dealers::lang.dealer.created_at
+        label: Membership Requested On
         type: datetime
 
-    membership_requested_at:
-        label: Requested On
-        type: datetime
+    contact_person:
+        label: Contact Person
+        searchable: true
+        select: concat(contact_person_first_name, ' ', contact_person_last_name)
+
+    contact_person_email:
+        label: Contact Person Email
+        searchable: true
 
     is_activated:
         label: Activated?

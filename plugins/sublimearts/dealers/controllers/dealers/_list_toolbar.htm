@@ -2,7 +2,7 @@
     <a
         href="<?= Backend::url('sublimearts/dealers/dealers/create') ?>"
         class="btn btn-primary oc-icon-plus">
-        <?= e(trans('sublimearts.dealers::lang.dealers.new_dealer')) ?>
+        <?= e(trans('New Dealer')) ?>
     </a>
 
     <button
@@ -12,16 +12,16 @@
             checked: $('.control-list').listWidget('getChecked')
         })"
         data-request="onDelete"
-        data-request-confirm="<?= e(trans('sublimearts.dealers::lang.dealers.delete_selected_confirm')) ?>"
+        data-request-confirm="Are you sure you want to delete these records?"
         data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-request-success="$(this).prop('disabled', true)"
         data-stripe-load-indicator>
-        <?= e(trans('backend::lang.list.delete_selected')) ?>
+        Delete Selected
     </button>
 
     <a href="<?= Backend::url('sublimearts/dealers/dealergroups') ?>" class="btn btn-default oc-icon-group">
-        <?= e(trans('sublimearts.dealers::lang.groups.all_groups')) ?>
+        Dealer Groups
     </a>
 </div>

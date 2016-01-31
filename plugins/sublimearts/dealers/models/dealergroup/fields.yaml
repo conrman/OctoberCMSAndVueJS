@@ -4,20 +4,21 @@
 
 fields:
     name:
-        label: sublimearts.dealers::lang.group.name
+        label: Group Name
         span: left
 
     code:
-        label: sublimearts.dealers::lang.group.code
-        comment: sublimearts.dealers::lang.group.code_comment
+        label: Group Code
+        comment: A unique code identifying this Group.
         span: right
         preset: name
 
     description:
-        label: sublimearts.dealers::lang.group.description_field
+        label: Group Description
         type: textarea
         size: tiny
 
     discount:
-        label: Discount over FOB
+        label: Discount % over FOB
         type: number
+        comment: DO NOT enter the '%' sign.

@@ -5,15 +5,15 @@
 columns:
 
     id:
-        label: sublimearts.dealers::lang.group.id
+        label: ID
         invisible: true
 
     name:
-        label: sublimearts.dealers::lang.group.name
+        label: Group Name
         searchable: true
 
     code:
-        label: sublimearts.dealers::lang.group.code
+        label: Group Code
 
     discount:
         label: Discount %
@@ -21,11 +21,11 @@ columns:
         select: concat(discount, '%')
 
     dealers_count:
-        label: sublimearts.dealers::lang.group.dealers_count
+        label: No. of members
         relation: dealers_count
         valueFrom: count
         default: 0
 
     created_at:
-        label: sublimearts.dealers::lang.group.created_at
+        label: Created On
         type: datetime

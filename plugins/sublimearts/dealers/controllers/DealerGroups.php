@@ -23,7 +23,6 @@ class DealerGroups extends Controller
     public function __construct()
     {
         parent::__construct();
-
         BackendMenu::setContext('SublimeArts.Dealers', 'dealers', 'dealergroups');
     }
 }

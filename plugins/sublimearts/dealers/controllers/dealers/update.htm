@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>"><?= e(trans('sublimearts.dealers::lang.dealers.menu_label')) ?></a></li>
+        <li><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>">All Dealers</a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -8,7 +8,7 @@
 <?php if (!$this->fatalError): ?>
 
     <?php Block::put('form-contents') ?>
-
+        
         <?php if ($formModel->trashed()): ?>
             <?= $this->makePartial('hint_trashed') ?>
         <?php elseif (!$formModel->is_activated): ?>
@@ -50,7 +50,7 @@
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
                     data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name'=>$formRecordName])) ?>"
-                    data-request-confirm="<?= e(trans('sublimearts.dealers::lang.dealers.delete_confirm')) ?>">
+                    data-request-confirm="Are you sure you wish to delete this Dealer?">
                 </button>
             </div>
         </div>
@@ -73,6 +73,6 @@
     </div>
     <div class="padded-container">
         <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
-        <p><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>" class="btn btn-default"><?= e(trans('sublimearts.dealers::lang.dealers.return_to_list')) ?></a></p>
+        <p><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>" class="btn btn-default">Return to Dealers</a></p>
     </div>
 <?php endif ?>

@@ -20,7 +20,6 @@ class CreateThrottlesTable extends Migration
             $table->timestamp('suspended_at')->nullable();
             $table->boolean('is_banned')->default(0);
             $table->timestamp('banned_at')->nullable();
-            $table->timestamps();
         });
     }
 

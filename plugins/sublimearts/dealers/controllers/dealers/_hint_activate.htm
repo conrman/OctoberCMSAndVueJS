@@ -2,8 +2,8 @@
     <div class="callout callout-warning">
         <div class="header">
             <i class="icon-warning"></i>
-            <h3><?= e(trans('sublimearts.dealers::lang.dealers.activate_warning_title')) ?></h3>
-            <p><?= e(trans('sublimearts.dealers::lang.dealers.activate_warning_desc')) ?></p>
+            <h3>Dealer Not Active</h3>
+            <p>This dealer has not been activated yet so they will be unable to login.</p>
         </div>
         <div class="content">
             <div class="loading-indicator-container">
@@ -11,9 +11,9 @@
                     type="button"
                     class="btn btn-warning"
                     data-request="onActivate"
-                    data-load-indicator="<?= e(trans('sublimearts.dealers::lang.dealers.activating')) ?>"
-                    data-request-confirm="<?= e(trans('sublimearts.dealers::lang.dealers.activate_confirm')) ?>">
-                    <?= e(trans('sublimearts.dealers::lang.dealers.active_manually')) ?>
+                    data-load-indicator="Activating Dealer"
+                    data-request-confirm="Confirm Activation?">
+                    Activate Now
                 </button>
             </div>
         </div>

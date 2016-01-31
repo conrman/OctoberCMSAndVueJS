@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: sublimearts.dealers::lang.group.label
+name: Dealer Group
 
 # Model Form Field configuration
 form: $/sublimearts/dealers/models/dealergroup/fields.yaml
@@ -16,16 +16,16 @@ defaultRedirect: sublimearts/dealers/dealergroups
 
 # Create page
 create:
-    title: sublimearts.dealers::lang.groups.create_title
+    title: New Dealer Group
     redirect: sublimearts/dealers/dealergroups/update/:id
     redirectClose: sublimearts/dealers/dealergroups
 
 # Update page
 update:
-    title: sublimearts.dealers::lang.groups.update_title
+    title: Update Dealer Group
     redirect: sublimearts/dealers/dealergroups
     redirectClose: sublimearts/dealers/dealergroups
 
 # Preview page
 preview:
-    title: sublimearts.dealers::lang.groups.update_title
+    title: Update Dealer Group

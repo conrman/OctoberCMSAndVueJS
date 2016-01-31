@@ -3,12 +3,12 @@
 use Lang;
 use Flash;
 use BackendMenu;
-use BackendAuth;
 use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
 use SublimeArts\Dealers\Models\Dealer;
-use SublimeArts\Dealers\Models\DealerGroup;
 use SublimeArts\Dealers\Models\Settings as DealerSettings;
+use SublimeArts\Dealers\Models\DealerGroup;
+
 
 class Dealers extends Controller
 {
@@ -19,7 +19,6 @@ class Dealers extends Controller
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
-    public $relationConfig;
 
     public $requiredPermissions = ['sublimearts.dealers.access_dealers'];
 
@@ -28,13 +27,28 @@ class Dealers extends Controller
     public function __construct()
     {
         parent::__construct();
-
         BackendMenu::setContext('SublimeArts.Dealers', 'dealers', 'dealers');
         SettingsManager::setContext('SublimeArts.Dealers', 'settings');
     }
 
     /**
-     * {@inheritDoc}
+     * Manually activate a Dealer
+     */
+    public function update_onActivate($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->attemptActivation($model->activation_code);
+
+        Flash::success('Dealer was successfully Activated!');
+
+        if ($redirect = $this->makeRedirect('update', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
+     * Make it easier to spot Non-Active and Trashed dealers in the list
      */
     public function listInjectRowClass($record, $definition = null)
     {
@@ -47,12 +61,12 @@ class Dealers extends Controller
         }
     }
 
-    public function listExtendQuery($query)
+    public function formExtendQuery($query)
     {
         $query->withTrashed();
     }
 
-    public function formExtendQuery($query)
+    public function listExtendQuery($query)
     {
         $query->withTrashed();
     }
@@ -73,20 +87,28 @@ class Dealers extends Controller
         }
     }
 
+
     /**
-     * Manually activate a user
+     * Deleted checked users
      */
-    public function update_onActivate($recordId = null)
+    public function index_onDelete()
     {
-        $model = $this->formFindModelObject($recordId);
+        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
 
-        $model->attemptActivation($model->activation_code);
+            foreach ($checkedIds as $dealerId) {
+                if (!$dealer = Dealer::find($dealerId)) {
+                    continue;
+                }
+                $dealer->delete();
+            }
 
-        Flash::success(Lang::get('sublimearts.dealers::lang.dealers.activated_success'));
-
-        if ($redirect = $this->makeRedirect('update', $model)) {
-            return $redirect;
+            Flash::success('Selected Dealers were deleted.');
         }
+        else {
+            Flash::error('No Dealers Selected!');
+        }
+
+        return $this->listRefresh();
     }
 
     /**
@@ -98,33 +120,11 @@ class Dealers extends Controller
 
         $model->forceDelete();
 
-        Flash::success(Lang::get('backend::lang.form.delete_success'));
+        Flash::success('Dealer deleted successfully!');
 
         if ($redirect = $this->makeRedirect('delete', $model)) {
             return $redirect;
         }
     }
 
-    /**
-     * Deleted checked users
-     */
-    public function index_onDelete()
-    {
-        if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
-
-            foreach ($checkedIds as $userId) {
-                if (!$user = Dealer::find($userId)) {
-                    continue;
-                }
-                $user->delete();
-            }
-
-            Flash::success(Lang::get('sublimearts.dealers::lang.dealers.delete_selected_success'));
-        }
-        else {
-            Flash::error(Lang::get('sublimearts.dealers::lang.dealers.delete_selected_empty'));
-        }
-
-        return $this->listRefresh();
-    }
 }

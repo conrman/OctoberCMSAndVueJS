@@ -33,36 +33,22 @@ class Plugin extends PluginBase
 
     public function register()
     {
-        $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', 'SublimeArts\Dealers\Facades\Auth');
-
-        App::singleton('dealer.auth', function() {
-            return \SublimeArts\Dealers\Classes\AuthManager::instance();
-        });
-
-        /*
-         * Apply dealer-based mail blocking
-         */
-        Event::listen('mailer.prepareSend', function($mailer, $view, $message){
-            return MailBlocker::filterMessage($view, $message);
-        });
+        
     }
 
     public function registerComponents()
     {
         return [
-            'SublimeArts\Dealers\Components\Session'       => 'dealerSession',
-            'SublimeArts\Dealers\Components\Account'       => 'dealerAccount',
-            'SublimeArts\Dealers\Components\ResetPassword' => 'resetPassword'
+            
         ];
     }
 
     public function registerPermissions()
     {
         return [
-            'sublimearts.dealers.access_dealers' => ['tab' => 'sublimearts.dealers::lang.plugin.tab', 'label' => 'sublimearts.dealers::lang.plugin.access_dealers'],
-            'sublimearts.dealers.access_groups' => ['tab' => 'sublimearts.dealers::lang.plugin.tab', 'label' => 'sublimearts.dealers::lang.plugin.access_groups'],
-            'sublimearts.dealers.access_settings' => ['tab' => 'sublimearts.dealers::lang.plugin.tab', 'label' => 'sublimearts.dealers::lang.plugin.access_settings']
+            'sublimearts.dealers.access_dealers' => ['tab' => 'Dealers', 'label' => 'Allow access to Dealers Management'],
+            'sublimearts.dealers.access_groups' => ['tab' => 'Dealers', 'label' => 'Allow access to Dealer Group Management'],
+            'sublimearts.dealers.access_settings' => ['tab' => 'Dealers', 'label' => 'Allow access to Backend Dealer Settings']
         ];
     }
 
@@ -70,7 +56,7 @@ class Plugin extends PluginBase
     {
         return [
             'dealers' => [
-                'label'       => 'sublimearts.dealers::lang.dealers.menu_label',
+                'label'       => 'Dealers',
                 'url'         => Backend::url('sublimearts/dealers/dealers'),
                 'icon'        => 'icon-user',
                 'permissions' => ['sublimearts.dealers.*'],
@@ -83,9 +69,9 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label'       => 'sublimearts.dealers::lang.settings.menu_label',
-                'description' => 'sublimearts.dealers::lang.settings.menu_description',
-                'category'    => 'sublimearts.dealers::lang.settings.dealers',
+                'label'       => 'Dealer Settings',
+                'description' => 'Manage Dealers based Settings.',
+                'category'    => 'Dealers',
                 'icon'        => 'icon-cog',
                 'class'       => 'SublimeArts\Dealers\Models\Settings',
                 'order'       => 500,

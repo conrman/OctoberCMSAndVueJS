@@ -3,7 +3,7 @@
 # ===================================
 
 # List Title
-title: sublimearts.dealers::lang.dealers.list_title
+title: Dealers
 
 # Model List Column configuration
 list: $/sublimearts/dealers/models/dealer/columns.yaml
@@ -15,7 +15,7 @@ modelClass: SublimeArts\Dealers\Models\Dealer
 recordUrl: sublimearts/dealers/dealers/update/:id
 
 # Message to display if the list is empty
-noRecordsMessage: backend::lang.list.no_records
+noRecordsMessage: No Dealers
 
 # Records to display per page
 recordsPerPage: 20

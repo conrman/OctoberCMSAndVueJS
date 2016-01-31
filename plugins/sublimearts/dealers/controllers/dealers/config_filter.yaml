@@ -7,7 +7,7 @@ scopes:
     groups:
 
         # Filter name
-        label: sublimearts.dealers::lang.group.label
+        label: Filtered by Group(s)
 
         # Model Class name
         modelClass: SublimeArts\Dealers\Models\DealerGroup

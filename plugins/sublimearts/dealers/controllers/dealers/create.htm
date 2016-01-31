@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>"><?= e(trans('sublimearts.dealers::lang.dealers.menu_label')) ?></a></li>
+        <li><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>">Dealers</a></li>
         <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -59,6 +59,6 @@
     </div>
     <div class="padded-container">
         <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
-        <p><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>" class="btn btn-default"><?= e(trans('sublimearts.dealers::lang.dealers.return_to_list')) ?></a></p>
+        <p><a href="<?= Backend::url('sublimearts/dealers/dealers') ?>" class="btn btn-default">Return to All Dealers</a></p>
     </div>
 <?php endif ?>

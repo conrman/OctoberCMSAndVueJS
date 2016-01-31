@@ -9,7 +9,7 @@ list: $/sublimearts/dealers/models/dealergroup/columns.yaml
 modelClass: SublimeArts\Dealers\Models\DealerGroup
 
 # List Title
-title: sublimearts.dealers::lang.groups.list_title
+title: Dealer Groups
 
 # Link URL for each record
 recordUrl: sublimearts/dealers/dealergroups/update/:id

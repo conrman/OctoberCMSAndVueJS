@@ -19,12 +19,11 @@ class CreateDealersTable extends Migration
             $table->string('company_name')->unique()->index();
             $table->string('password');
             $table->string('activation_code')->nullable()->index();
-            $table->string('persist_code')->nullable();
+            $table->string('persist_code')->nullable()->index();
             $table->string('reset_password_code')->nullable()->index();
             $table->boolean('is_activated')->default(0);
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->timestamp('membership_requested_at')->nullable();
             $table->timestamp('last_login')->nullable();
 
             $table->integer('country_id')->unsigned()->nullable()->index();

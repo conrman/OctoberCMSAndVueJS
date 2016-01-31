@@ -39,7 +39,6 @@ class DealershipRequestForm extends ComponentBase
             $dealer->state = $state;
             $dealer->city = $city;
             $dealer->phone = $phone;
-            $dealer->membership_requested_at = Carbon::now();
             $dealer->save();
 
             if($dealer->save()) {

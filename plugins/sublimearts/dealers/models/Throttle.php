@@ -1,26 +1,18 @@
 <?php namespace SublimeArts\Dealers\Models;
 
-use Model;
+use October\Rain\Auth\Models\Throttle as ThrottleBase;
 
-/**
- * Throttle Model
- */
-class Throttle extends Model
+class Throttle extends ThrottleBase
 {
-
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'sublimearts_dealers_throttles';
+    protected $table = 'sublimearts_dealers_throttles';
 
-    /**
-     * @var array Relations
-     */
     /**
      * @var array Relations
      */
     public $belongsTo = [
         'dealer' => ['SublimeArts\Dealers\Models\Dealer']
     ];
-
 }

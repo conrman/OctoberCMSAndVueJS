@@ -5,7 +5,7 @@
 fields:
 
     company_name:
-        label: sublimearts.dealers::lang.dealer.company_name
+        label: Company Name
         span: left 
 
     username:
@@ -17,29 +17,29 @@ tabs:
     fields:
 
         email:
-            label: sublimearts.dealers::lang.dealer.email
+            label: Company Email
             tab: Account Info
             span: full
 
         password:
-            label: sublimearts.dealers::lang.dealer.reset_password
-            comment: sublimearts.dealers::lang.dealer.reset_password_comment
+            label: Reset Password
+            comment: To reset this dealer's password, enter a new password here.
             tab: Account Info
             type: password
             span: left
 
         password_confirmation:
-            label: sublimearts.dealers::lang.dealer.confirm_password
-            comment: sublimearts.dealers::lang.dealer.confirm_password_comment
+            label: Password Confirmation
+            comment: Enter the password again to confirm it.
             tab: Account Info
             type: password
             span: right
 
         group:
-            label: sublimearts.dealers::lang.dealer.groups
+            label: Dealer Group
             tab: Account Info
             type: relation
-            emptyOption: sublimearts.dealers::lang.dealer.empty_groups
+            emptyOption: No Dealer Groups
 
 
         phone:
