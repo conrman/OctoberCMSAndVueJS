@@ -13,6 +13,6 @@ class Throttle extends ThrottleBase
      * @var array Relations
      */
     public $belongsTo = [
-        'dealer' => ['SublimeArts\Dealers\Models\Dealer']
+        'dealer' => ['SublimeArts\Dealers\Models\Dealer', 'key' => 'user_id']
     ];
 }

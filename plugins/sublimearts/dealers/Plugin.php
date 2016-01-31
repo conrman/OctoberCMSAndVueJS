@@ -12,6 +12,10 @@ use SublimeArts\Dealers\Models\MailBlocker;
  */
 class Plugin extends PluginBase
 {
+    /**
+     * @var boolean Determine if this plugin should have elevated privileges.
+     */
+    public $elevated = true;
 
     /**
      * Returns information about this plugin.
@@ -33,13 +37,27 @@ class Plugin extends PluginBase
 
     public function register()
     {
-        
+        $alias = AliasLoader::getInstance();
+        $alias->alias('Auth', 'SublimeArts\Dealers\Facades\Auth');
+
+        App::singleton('dealer.auth', function() {
+            return \SublimeArts\Dealers\Classes\AuthManager::instance();
+        });
+
+        /*
+         * Apply user-based mail blocking
+         */
+        Event::listen('mailer.prepareSend', function($mailer, $view, $message){
+            return MailBlocker::filterMessage($view, $message);
+        });
     }
 
     public function registerComponents()
     {
         return [
-            
+            'SublimeArts\Dealers\Components\Session'       => 'dealerSession',
+            'SublimeArts\Dealers\Components\Account'       => 'dealerAccount',
+            'SublimeArts\Dealers\Components\ResetPassword' => 'dealerResetPassword'
         ];
     }
 

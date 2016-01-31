@@ -8,7 +8,7 @@ class SeedDealersTable extends Seeder
 {
     public function run()
     {
-        $password = Hash::make('tester');
+        $password = 'tester';
         
         Dealer::create([
             'username' => 'testdealer1',

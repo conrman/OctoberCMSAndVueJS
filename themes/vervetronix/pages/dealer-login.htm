@@ -1,11 +1,18 @@
 title = "Dealer Login | VerveTronix"
-url = "/dealers/login"
+url = "/dealers/login/:code?"
 layout = "master-layout"
 description = "Dealer Login | VerveTronix"
-is_hidden = "0"
+is_hidden = 0
 meta_title = "Dealer Login | VerveTronix"
 
 [dealershipRequestForm]
+
+[dealerAccount]
+redirect = "dealer-home"
+paramCode = "code"
+
+[dealerResetPassword]
+paramCode = "code"
 ==
 {% partial "trans-header" %}
 
@@ -72,7 +79,7 @@ var oxyThemeData = {
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h1 class="hairline">Sign In Form Here</h1>
+                        {% component 'dealerAccount' %}
                     </div>
                 </div>
             </div>
@@ -85,15 +92,14 @@ var oxyThemeData = {
                     <div class="col-md-12 text-center">
                         <header class="text-center element-tall-top element-no-bottom os-animation condensed" data-os-animation="fadeIn" data-os-animation-delay=".0s">
                             <h1 class="bigger hairline bordered bordered-normal">
-                                Want to be a dealer?
+                                Forgot your Password?
                             </h1>
                             <p class="lead">
-                                Please feel free to reach out to us thru this.
+                                Reset it via email now!
                             </p>
                         </header>
-                        <a href="{{ 'dealership'|page }}" class="btn btn-primary btn-lg element-short-top element-tall-bottom btn-custom os-animation" target="_blank" data-os-animation="fadeInUp" data-os-animation-delay="0.3s ">
-                            Reach Out
-                        </a>
+                        
+                        {% component 'dealerResetPassword' %}
                     </div>
                 </div>
             </div>

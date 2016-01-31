@@ -68,10 +68,14 @@
                 </li>
                 {% if dealer %}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ dealer.username }}</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ dealer.getAvatarThumb }}" alt="{{ dealer.username }}"> 
+                            &nbsp;
+                            {{ dealer.username }}
+                        </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ ['dealer-home'|page, '/', dealer.username ]|join }}">{{ dealer.username }}</a>
+                                <a href="{{ ['dealer-home'|page, '/', dealer.username ]|join }}">Account Home</a>
                             </li>
                             <li>
                                 <a data-request="onLogout" data-request-data="redirect: '/'">Sign out</a>

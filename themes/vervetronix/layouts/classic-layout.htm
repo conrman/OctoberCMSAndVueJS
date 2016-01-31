@@ -1,6 +1,10 @@
 description = "Default layout for almost all pages"
 
 [productDisplay]
+
+[dealerSession]
+security = "all"
+redirect = "dealer-login"
 ==
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +38,8 @@ description = "Default layout for almost all pages"
 
         <!-- Flash Messaging -->
         <div id="flashmessages">{% partial "flash-message" %}</div>
+        
+        {% component 'dealerSession' %}
         
         {% page %}
 

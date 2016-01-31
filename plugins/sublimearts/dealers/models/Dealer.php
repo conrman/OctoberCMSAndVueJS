@@ -116,17 +116,17 @@ class Dealer extends DealerBase
             $this->last_login = $this->freshTimestamp();
             $this->restore();
 
-            // Mail::sendTo($this, 'rainlab.user::mail.reactivate', [
+            // Mail::sendTo($this, 'sublimearts.dealers::mail.reactivate', [
             //     'name' => $this->name
             // ]);
 
-            Event::fire('rainlab.user.reactivate', [$this]);
+            Event::fire('sublimearts.dealers.reactivate', [$this]);
         }
         else {
             parent::afterLogin();
         }
 
-        Event::fire('rainlab.user.login', [$this]);
+        Event::fire('sublimearts.dealers.login', [$this]);
     }
 
     public function scopeIsActivated($query)
@@ -168,7 +168,7 @@ class Dealer extends DealerBase
     public function afterDelete()
     {
         if ($this->isSoftDelete()) {
-            Event::fire('rainlab.user.deactivate', [$this]);
+            Event::fire('sublimearts.dealers.deactivate', [$this]);
             return;
         }
 
@@ -193,7 +193,7 @@ class Dealer extends DealerBase
     /**
      * Returns the public image file path to this user's avatar.
      */
-    public function getAvatarThumb($size = 25, $options = null)
+    public function getAvatarThumb($size = 20, $options = null)
     {
         if (is_string($options)) {
             $options = ['default' => $options];
