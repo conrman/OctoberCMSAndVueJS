@@ -14,7 +14,7 @@ columns:
         invisible: true
 
     company_name:
-        label: Company Name
+        label: Company
         searchable: true
 
     group:
@@ -27,7 +27,7 @@ columns:
         searchable: true
 
     created_at:
-        label: Membership Requested On
+        label: Registered On
         type: datetime
 
     contact_person:
@@ -40,9 +40,13 @@ columns:
         searchable: true
 
     is_activated:
-        label: Activated?
+        label: Active?
         type: switch
 
     activated_at:
         label: Activated On
+        type: datetime
+
+    last_login:
+        label: Last Login
         type: datetime

@@ -19,6 +19,7 @@ class Dealers extends Controller
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
+    public $relationConfig;
 
     public $requiredPermissions = ['sublimearts.dealers.access_dealers'];
 
@@ -41,6 +42,27 @@ class Dealers extends Controller
         $model->attemptActivation($model->activation_code);
 
         Flash::success('Dealer was successfully Activated!');
+
+        if ($redirect = $this->makeRedirect('update', $model)) {
+            return $redirect;
+        }
+    }
+
+    /**
+     * Manually re-activate a Dealer
+     */
+    public function update_onReActivate($recordId = null)
+    {
+        $model = $this->formFindModelObject($recordId);
+
+        $model->restore();
+
+        if(!$model->is_activated)
+        {
+            $model->attemptActivation($model->activation_code);
+        }
+
+        Flash::success('Dealer was successfully Re-activated!');
 
         if ($redirect = $this->makeRedirect('update', $model)) {
             return $redirect;
@@ -99,10 +121,11 @@ class Dealers extends Controller
                 if (!$dealer = Dealer::find($dealerId)) {
                     continue;
                 }
+                $dealer->is_activated = 0;
                 $dealer->delete();
             }
 
-            Flash::success('Selected Dealers were deleted.');
+            Flash::success('Selected Dealers were suspended.');
         }
         else {
             Flash::error('No Dealers Selected!');

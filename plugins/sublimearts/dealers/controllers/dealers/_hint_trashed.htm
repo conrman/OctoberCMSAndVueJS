@@ -2,8 +2,20 @@
     <div class="callout callout-danger">
         <div class="header">
             <i class="icon-minus-circle"></i>
-            <h3>Dealer Trashed</h3>
-            <p>This dealer was trashed!! They cannot be used anymore!</p>
+            <h3>Dealer Suspended</h3>
+            <p>This dealer was suspended!! They cannot be used anymore unless they are re-activated by the admin.</p>
+        </div>
+        <div class="content">
+            <div class="loading-indicator-container">
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-request="onReActivate"
+                    data-load-indicator="Re-activating Dealer"
+                    data-request-confirm="Confirm Re-activation?">
+                    Re-activate Now
+                </button>
+            </div>
         </div>
     </div>
 </div>

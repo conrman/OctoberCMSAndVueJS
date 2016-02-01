@@ -2,6 +2,8 @@
 
 use Mail;
 use Event;
+use Flash;
+use Redirect;
 use Carbon\Carbon;
 use October\Rain\Auth\Models\User as DealerBase;
 use SublimeArts\Dealers\Models\Settings as DealerSettings;
@@ -25,7 +27,7 @@ class Dealer extends DealerBase
     public $rules = [
         'email'    => 'required|between:6,255|email|unique:sublimearts_dealers_dealers',
         'username' => 'required|between:2,255|unique:sublimearts_dealers_dealers',
-        // 'password' => 'required:create|between:4,255|confirmed',
+        // 'password' => 'required|between:4,255|confirmed',
         // 'password_confirmation' => 'required_with:password|between:4,255'
     ];
 
@@ -55,7 +57,6 @@ class Dealer extends DealerBase
         'street_address',
         'zip_code',
         'phone',
-        'membership_requested_at',
         'contact_person_first_name',
         'contact_person_last_name',
         'contact_person_designation',
@@ -66,7 +67,8 @@ class Dealer extends DealerBase
     protected $dates = [
         'activated_at',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'last_login'
     ];
 
     public $hasMany = [
@@ -113,14 +115,16 @@ class Dealer extends DealerBase
     public function afterLogin()
     {
         if ($this->trashed()) {
-            $this->last_login = $this->freshTimestamp();
-            $this->restore();
+            Flash::warning('We\'re sorry but your account was suspended. Please contact the admins to know more about this issue.');
+            return;
+            // $this->last_login = $this->freshTimestamp();
+            // $this->restore();
 
             // Mail::sendTo($this, 'sublimearts.dealers::mail.reactivate', [
             //     'name' => $this->name
             // ]);
 
-            Event::fire('sublimearts.dealers.reactivate', [$this]);
+            // Event::fire('sublimearts.dealers.reactivate', [$this]);
         }
         else {
             parent::afterLogin();
@@ -173,8 +177,6 @@ class Dealer extends DealerBase
         }
 
         $this->avatar && $this->avatar->delete();
-
-        parent::afterDelete();
     }
 
     /**

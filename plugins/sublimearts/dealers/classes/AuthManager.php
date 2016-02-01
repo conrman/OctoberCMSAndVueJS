@@ -7,7 +7,7 @@ class AuthManager extends RainAuthManager
 {
     protected static $instance;
 
-    protected $sessionKey = 'dealer_auth';
+    protected $sessionKey = 'user_auth';
 
     protected $userModel = 'SublimeArts\Dealers\Models\Dealer';
 
