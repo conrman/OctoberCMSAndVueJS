@@ -8,7 +8,10 @@ meta_title = "Dealer Home | VerveTronix"
 [dealerSession]
 security = "dealer"
 redirect = "dealer-login"
+
+[dealerOrders]
 ==
+{% component "dealerOrders" %}
 {% partial "trans-header" %}
 
 <script type="text/javascript">
@@ -43,18 +46,163 @@ var oxyThemeData = {
                     <div class="col-md-12">
                         <header class="text-center element-tall-top element-tall-bottom condensed">
                             <h1 class="super hairline bordered-normal">
-                                Dealer Home
+                                {% if dealer %}
+                                    Welcome {{ dealer.username }}
+                                {% else %}
+                                    Welcome Dealer
+                                {% endif %}
                             </h1>
                         </header>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="two" class="section swatch-white">
+        
+        <section class="section swatch-black">
             <div class="container">
                 <div class="row element-tall-top element-tall-bottom">
-                    <div class="col-md-6 col-md-offset-3">
-
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="tabbable ''">
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <!-- Nav tabs -->
+                                <li class="active"><a href="#new-order" data-toggle="tab">New Order</a>
+                                </li>
+                                <li><a href="#pending-orders" data-toggle="tab">Pending Orders</a>
+                                </li>
+                                <li><a href="#shipments" data-toggle="tab">Shipments</a>
+                                </li>
+                                <li><a href="#resources" data-toggle="tab">Resources</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <!-- Tab panes -->
+                                <div class="tab-pane fade in active" id="new-order">
+                                    <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
+                                        <p>
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product Name</th>
+                                                        <th>Product Description</th>
+                                                        <th>Unit Price</th>
+                                                        <th>Order Qty</th>
+                                                        <th>Line Item Value</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% if products %}
+                                                        {% for product in products %}
+                                                        <tr valign="center">
+                                                            <td width="20%">{{ product.name }}</td>
+                                                            <td width="30%">{{ product.description|slice(0, 60) }}</td>
+                                                            <td>{{ ['$', product.dealer_price]|join }}</td>
+                                                            <td>
+                                                                <div class="form-control">
+                                                                    <input type="text" name="product_qty">
+                                                                </div>
+                                                            </td>
+                                                            <td>TOTAL</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <tr>
+                                                            <td colspan="4">
+                                                                No Products right now.
+                                                            </td>
+                                                        </tr>
+                                                    {% endif %}
+                                                </tbody>
+                                            </table>
+                                            <div class="form-control text-right">
+                                                <input type="submit" value="Place Order" class="btn btn-primary">
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade in" id="pending-orders">
+                                    <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
+                                        <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Order Date</th>
+                                                <th>Tentative Shipping On</th>
+                                                <th>Order Amount</th>
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% if pendingOrders %}
+                                                {% for order in pendingOrders %}
+                                                <tr>
+                                                    <td>{{ order.id }}</td>
+                                                    <td>{{ order.created_at|date("F jS | g:iA") }}</td>
+                                                    <td>{{ order.tentative_shipping_on|date("F jS | g:iA") }}</td>
+                                                    <td>{{ ['$', order.total_value]|join }}</td>
+                                                    <td>
+                                                        <a href="{{ ['dealer-order'|page, '/', order.id]|join }}">Edit Order</a>
+                                                        &nbsp;|&nbsp;
+                                                        <a href="{{ ['dealer-order'|page, '/cancel/', order.id]|join }}">Cancel Order</a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="4">
+                                                        No Pending Orders
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="shipments">
+                                    <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
+                                        <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Order Date</th>
+                                                <th>Shipped On</th>
+                                                <th>Order Amount</th>
+                                                <th>Shipped Thru</th>
+                                                <th>Tracking ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% if shippedOrders %}
+                                                {% for order in shippedOrders %}
+                                                <tr>
+                                                    <td>{{ order.id }}</td>
+                                                    <td>{{ order.created_at|date("F jS | g:iA") }}</td>
+                                                    <td>{{ order.shipped_on|date("F jS | g:iA") }}</td>
+                                                    <td>{{ ['$', order.total_value]|join }}</td>
+                                                    <td>{{ order.shipping_provider }}</td>
+                                                    <td>{{ order.tracking_number }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="4">
+                                                        No Shipped Orders
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="resources">
+                                    <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
+                                        <p>
+                                            This will soon have tons of resources for you, your sales-staff and customers alike. Watch this space!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -67,14 +215,14 @@ var oxyThemeData = {
                     <div class="col-md-12 text-center">
                         <header class="text-center element-tall-top element-no-bottom os-animation condensed" data-os-animation="fadeIn" data-os-animation-delay=".0s">
                             <h1 class="bigger hairline bordered bordered-normal">
-                                Having Trouble Signing In?
+                                Worried about the safety of your account?
                             </h1>
                             <p class="lead">
-                                Please feel free to reach out to us thru this.
+                                Please feel free to reset your password.
                             </p>
                         </header>
                         <a href="#" class="btn btn-primary btn-lg element-short-top element-tall-bottom btn-custom os-animation" target="_blank" data-os-animation="fadeInUp" data-os-animation-delay="0.3s ">
-                            Reach Out
+                            Reset Password
                         </a>
                     </div>
                 </div>

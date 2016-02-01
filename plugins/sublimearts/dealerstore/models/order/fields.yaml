@@ -35,6 +35,15 @@ fields:
             field: is_shipped
             condition: checked
 
+    tentative_shipping_on:
+        label: Tentative Shipping Date
+        type: datepicker
+        span: right 
+        trigger:
+            action: hide
+            field: is_shipped
+            condition: checked
+
     shipping_provider:
         label: Shipping Provider
         type: text

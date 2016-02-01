@@ -37,6 +37,7 @@ class Plugin extends PluginBase
      
         return [
             'SublimeArts\DealerStore\Components\ProductDisplay' => 'productDisplay',
+            'SublimeArts\DealerStore\Components\DealerOrders' => 'dealerOrders',
         ];
     }
 

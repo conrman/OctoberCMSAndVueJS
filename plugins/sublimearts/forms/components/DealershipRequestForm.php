@@ -26,6 +26,7 @@ class DealershipRequestForm extends ComponentBase
         $city = post('city');
         $phone = post('company_phone');
 
+
         $existingDealer = Dealer::where('email', $email)->first();
 
         if($existingDealer) {

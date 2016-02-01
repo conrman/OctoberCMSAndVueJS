@@ -1,6 +1,7 @@
 <?php namespace SublimeArts\DealerStore\Models;
 
 use Model, Log;
+use Illuminate\Support\Collection;
 use SublimeArts\DealerStore\Models\LineItem;
 
 /**
@@ -22,6 +23,7 @@ class Order extends Model
     protected $fillable = [
         'dealer_id',
         'shipped_on',
+        'tentative_shipping_on',
         'shipping_provider',
         'tracking_number',
         'total_value'
@@ -38,13 +40,6 @@ class Order extends Model
         'dealer' => 'SublimeArts\Dealers\Models\Dealer'
     ];
 
-    public $hasManyThrough = [
-        'products' => [
-            'SublimeArts\DealerStore\Models\Product',
-            'through' => 'SublimeArts\DealerStore\Models\LineItem'
-        ]
-    ];
-
     public function updateTotal()
     {
         $lineItems = $this->lineItems;
@@ -55,6 +50,29 @@ class Order extends Model
         }
 
         $this->save();
+    }
+
+    public function getProducts()
+    {
+        $products = [];
+        $lineItems = $this->lineItems;
+
+        foreach($lineItems as $lineItem)
+        {
+            $product = $lineItem->product->first();
+            array_push($products, $product);
+        }
+
+        return $products;
+        // return Collection::make($products);
+    }
+
+    public function afterSave()
+    {
+        if(!$this->is_shipped)
+        {
+            $this->shipping_provider = $this->tracking_number = null;
+        }
     }
 
 }

@@ -4,6 +4,7 @@ use Mail;
 use Event;
 use Flash;
 use Redirect;
+use Exception;
 use Carbon\Carbon;
 use October\Rain\Auth\Models\User as DealerBase;
 use SublimeArts\Dealers\Models\Settings as DealerSettings;
@@ -274,5 +275,16 @@ class Dealer extends DealerBase
     public function getLastSeen()
     {
         return $this->last_login ?: $this->created_at;
+    }
+
+    public function generatePassword()
+    {
+        $this->password = ($this->password) ? : uniqid();
+        $this->forceSave();
+    }
+
+    public function afterCreate()
+    {
+        // $this->generatePassword();
     }
 }
