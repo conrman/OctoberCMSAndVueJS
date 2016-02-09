@@ -3,15 +3,13 @@ $('#subscriptionForm').on('shown.bs.modal', function () {
     $('#emailInput').focus()
 });
 
+// ---------------------------------- x ----------------------------------
 // Dealership request Form Modal
 $('#dealershipRequestForm').on('shown.bs.modal', function () {
     $('#company_name').focus()
 });
 
-$('#dealershipRequestForm button#submit').on('click', function() {
-    ('#dealershipRequestForm').modal('hide');
-})
-
+// ---------------------------------- x ----------------------------------
 // Countdown Timer
 var finalDate = '2016/01/13';
 $('div#countdown').countdown(finalDate, {
@@ -26,3 +24,119 @@ $('div#countdown').countdown(finalDate, {
     $('b#minutes-text').html(event.strftime('<b>minute%!M</b>'));
     $('b#seconds-text').html(event.strftime('<b>second%!S</b>'));
 });
+
+// ---------------------------------- x ----------------------------------
+// VueJS based Ordering System
+new Vue({
+    el: '#vue-ordering-system',
+
+    http: {
+        emulateJSON: true,
+        emulateHTTP: true
+    },
+    
+    data: {
+        products: [],
+    
+        lines: {},
+
+        order_total: 0
+    },
+
+    created: function() {
+        this.fetchProducts();
+    },
+
+    computed: {
+        hasAnOrder: function() {
+            return (this.order_total != 0);
+        }
+    },
+
+    methods: {
+        fetchProducts: function() {
+            this.$http.get('/dealerstore/products', function(products) {
+                this.products = products;
+            }.bind(this));
+        },
+
+        saveOrder: function() {
+            var url = '/dealerstore/orders';
+            
+            this.$http.post(url, this.lines).then(function(response) {
+                window.location.replace('/dealers/home');
+            }, function(response) {
+                console.log('Something went wrong as below:');
+                console.log(response);
+            });
+        }
+    },
+
+    events: {
+        'line-items-updated': function() {
+            var orderTotal = 0;
+
+            for(var lineId in this.lines) {
+                if(!this.lines.hasOwnProperty(lineId)) continue;
+                orderTotal += this.lines[lineId].value;
+            }
+
+            this.order_total = orderTotal;
+        }
+    },
+
+    components: {
+        'line-item': {
+            template: '#line-item-template',
+    
+            props: ['product', 'lines'],
+    
+            data: function() {
+                return {
+                    order_qty: 0
+                };
+            },
+    
+            computed: {
+                lineValue: function() {
+                    return (this.product.dealer_price * this.order_qty);
+                },
+
+                isOrdered: function() {
+                    return !(this.order_qty == 0);
+                },
+
+                wasOrdered: function() {
+                    return (this.product.id in this.lines);
+                }
+            },
+
+            methods: {
+                addToOrder: function() {
+                    if(this.isOrdered) {
+                        this.lines[this.product.id] = {
+                            product: {
+                                id: this.product.id,
+                                name: this.product.name,
+                                fob_price: this.product.fob_price,
+                                dealer_price: this.product.dealer_price,
+                                retail_price: this.product.retail_price,
+                                retail_price: this.product.retail_price,
+                                code: this.product.code
+                            },
+                            order_qty: this.order_qty,
+                            value: this.lineValue
+                        };
+                    } else {
+                        delete this.lines[this.product.id];
+                    }
+
+                    this.$dispatch('line-items-updated');
+                }                
+            }
+            
+        }
+    }
+});
+
+// ---------------------------------- x ----------------------------------

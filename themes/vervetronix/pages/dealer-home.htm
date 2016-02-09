@@ -77,48 +77,68 @@ var oxyThemeData = {
                             <div class="tab-content">
                                 <!-- Tab panes -->
                                 <div class="tab-pane fade in active" id="new-order">
-                                    <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
-                                        <p>
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Product Name</th>
-                                                        <th>Product Description</th>
-                                                        <th>Unit Price</th>
-                                                        <th>Order Qty</th>
-                                                        <th>Line Item Value</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% if products %}
-                                                        {% for product in products %}
-                                                        <tr valign="center">
-                                                            <td width="20%">{{ product.name }}</td>
-                                                            <td width="30%">{{ product.description|slice(0, 60) }}</td>
-                                                            <td>{{ ['$', product.dealer_price]|join }}</td>
-                                                            <td>
-                                                                <div class="form-control">
-                                                                    <input type="text" name="product_qty">
-                                                                </div>
-                                                            </td>
-                                                            <td>TOTAL</td>
-                                                        </tr>
-                                                        {% endfor %}
-                                                    {% else %}
-                                                        <tr>
-                                                            <td colspan="4">
-                                                                No Products right now.
-                                                            </td>
-                                                        </tr>
-                                                    {% endif %}
-                                                </tbody>
-                                            </table>
-                                            <div class="form-control text-right">
-                                                <input type="submit" value="Place Order" class="btn btn-primary">
+                                    {% verbatim %}
+                                    <div id="vue-ordering-system">
+                                        <table class="table table-hover">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Product</th>
+                                                <th>Unit Price</th>
+                                                <th>Order Qty</th>
+                                                <th>Line Value</th>
+                                            </tr>
+                                            <tbody>
+                                                <tr v-for="product in products" 
+                                                    is="line-item"
+                                                    :product="product"
+                                                    :lines.sync="lines">
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="order-controls">
+                                                    <button class="btn btn-default"
+                                                            @click="saveOrder"
+                                                            v-show="hasAnOrder">
+                                                        Save Order
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </p>
+                                            <div class="col-md-4">
+                                                <div class="panel panel-success  element-normal-top element-short-bottom os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">
+                                                            Order Total
+                                                        </h3>
+                                                    </div>
+                                                    <div class="panel-body swatch-gray">
+                                                        <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
+                                                            <p>
+                                                                <strong>{{ order_total | currency }}</strong>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <template id="line-item-template">
+                                        <tr>
+                                            <td>{{ product.id }}</td>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.dealer_price | currency }}</td>
+                                            <td>
+                                                <input type="number" min="0" placeholder="Add Qty"
+                                                       v-model="order_qty"
+                                                       @blur="addToOrder">
+                                            </td>
+                                            <td>{{ lineValue | currency }}</td>
+                                        </tr>
+                                    </template>
                                 </div>
+                                {% endverbatim %}
                                 <div class="tab-pane fade in" id="pending-orders">
                                     <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
                                         <table class="table table-hover">

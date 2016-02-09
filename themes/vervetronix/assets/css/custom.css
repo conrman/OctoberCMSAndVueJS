@@ -9,8 +9,18 @@ div#flashmessages {
 /********************* FLASH MESSAGES *********************/
 
 
-/********************* MODEL FORMS *********************/
+/********************* MODAL FORMS *********************/
 .modal-body {
     background: #ECEBF1;
 }
-/********************* MODEL FORMS *********************/
+/********************* MODAL FORMS *********************/
+
+/********************* HOVER TABLES *********************/
+.table-hover tr:hover {
+    color: white;
+}
+
+.table-hover a:hover {
+    color: white;
+}
+/********************* HOVER TABLES *********************/
