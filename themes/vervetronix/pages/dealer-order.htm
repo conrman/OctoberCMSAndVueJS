@@ -1,5 +1,5 @@
 title = "Order Management | VerveTronix"
-url = "/dealers/orders/edit/:id?"
+url = "/dealers/orders/:id/edit"
 layout = "master-layout"
 description = "Order Management | VerveTronix"
 is_hidden = "0"
@@ -9,15 +9,14 @@ meta_title = "Order Management | VerveTronix"
 security = "dealer"
 redirect = "dealer-login"
 
-[dealerOrders]
 ==
 <?php
 use SublimeArts\DealerStore\Models\Order;
 
-function onInit()
+function onInit() 
 {
-    $order = $this['order'] = Order::where('id', $this->param('id'))->first();
-    $lineItems = $this['lineItems'] = $order->lineItems;
+    $orderId = $this->param('id');
+    $order = $this['order'] = Order::where('id', $orderId)->first();
 }
 ?>
 ==
@@ -68,45 +67,79 @@ var oxyThemeData = {
             <div class="container">
                 <div class="row element-tall-top element-tall-bottom">
                     <div class="col-md-10 col-md-offset-1">
-                        <p class="lead element-short-top element-short-bottom">
-                            <strong>Status:</strong> 
-                            {% if order.is_shipped %}
-                                <strong>SHIPPED</strong> on {{ order.shipped_on|date("F jS | g:iA") }} thru {{ order.shipping_provider }} vide tracking number {{ order.tracking_number }}
+                        <p class="lead element-short-top element-no-bottom">
+                            <strong>Status: PENDING</strong> 
+                        </p>
+                        <p class="element-short-bottom">
+                            {% if order.tentative_shipping_on %}
+                                Tentatively Shipping On {{ order.tentative_shipping_on|date("F jS | g:iA") }}
                             {% else %}
-                                <strong>PENDING</strong> with tentative shipment on {{ order.tentative_shipping_on|date("F jS | g:iA") }}
+                                Shipment date not allocated yet
                             {% endif %}
                         </p>
-                        <table class="table table-hover">
-                            <thead>
+                        {% verbatim %}
+                        <div id="vue-ordering-system">
+                            <input type="text" hidden="true" v-model="mode" value="edit">
+                            <table class="table table-hover">
                                 <tr>
-                                    <th>Product Name</th>
-                                    <th>Product Description</th>
+                                    <th>#</th>
+                                    <th>Product</th>
                                     <th>Unit Price</th>
                                     <th>Order Qty</th>
-                                    <th>Line Item Value</th>
+                                    <th>Line Value</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {% if lineItems %}
-                                    {% for lineItem in lineItems %}
-                                    <tr valign="center">
-                                        <td width="20%">{{ lineItem.product.name }}</td>
-                                        <td width="30%">{{ lineItem.product.description|slice(0, 60) }}</td>
-                                        <td>{{ ['$', lineItem.product.dealer_price]|join }}</td>
-                                        <td>{{ lineItem.product_qty }}</td>
-                                        <td>{{ ['$', lineItem.value]|join }}</td>
+                                <tbody>
+                                    <tr v-for="product in products" 
+                                        is="line-item"
+                                        :product="product"
+                                        :mode="mode"
+                                        :lines.sync="lines"
+                                        >
                                     </tr>
-                                    {% endfor %}
-                                {% else %}
-                                    <tr>
-                                        <td colspan="4">
-                                            No Shipped Orders
-                                        </td>
-                                    </tr>
-                                {% endif %}
-                            </tbody>
-                        </table>
-                        <p class="lead swatch-white element-short-top element-short-bottom text-right">Total Order Value: <strong>{{ ['$', order.total_value]|join }} &nbsp;</strong></p>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="order-controls">
+                                        <button class="btn btn-default"
+                                                @click="saveEditedOrder"
+                                                v-show="hasAnOrder">
+                                            Save Order
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-success  element-normal-top element-short-bottom os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                Order Total
+                                            </h3>
+                                        </div>
+                                        <div class="panel-body swatch-gray">
+                                            <div class=" element-no-top element-no-bottom" data-os-animation="none" data-os-animation-delay="0s">
+                                                <p>
+                                                    <strong>{{ order_total | currency }}</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <template id="line-item-template">
+                                <tr>
+                                    <td>{{ product.id }}</td>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.dealer_price | currency }}</td>
+                                    <td>
+                                        <input type="number" min="0" placeholder="Add Qty"
+                                               v-model="order_qty"
+                                               @blur="addToOrder">
+                                    </td>
+                                    <td>{{ lineValue | currency }}</td>
+                                </tr>
+                            </template>
+                        </div>
+                        {% endverbatim %}
                     </div>
                 </div>
             </div>

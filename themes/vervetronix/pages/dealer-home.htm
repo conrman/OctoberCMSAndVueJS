@@ -80,13 +80,15 @@ var oxyThemeData = {
                                     {% verbatim %}
                                     <div id="vue-ordering-system">
                                         <table class="table table-hover">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Product</th>
-                                                <th>Unit Price</th>
-                                                <th>Order Qty</th>
-                                                <th>Line Value</th>
-                                            </tr>
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Product</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Order Qty</th>
+                                                    <th>Line Value</th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
                                                 <tr v-for="product in products" 
                                                     is="line-item"
@@ -146,6 +148,7 @@ var oxyThemeData = {
                                             <tr>
                                                 <th>Order ID</th>
                                                 <th>Order Date</th>
+                                                <th>Last Modified</th>
                                                 <th>Tentative Shipping On</th>
                                                 <th>Order Amount</th>
                                                 <th>Options</th>
@@ -157,12 +160,24 @@ var oxyThemeData = {
                                                 <tr>
                                                     <td>{{ order.id }}</td>
                                                     <td>{{ order.created_at|date("F jS | g:iA") }}</td>
-                                                    <td>{{ order.tentative_shipping_on|date("F jS | g:iA") }}</td>
+                                                    <td>{{ order.updated_at|date("F jS | g:iA") }}</td>
+                                                    <td>
+                                                        {% if order.tentative_shipping_on %}
+                                                            {{ order.tentative_shipping_on|date("F jS | g:iA") }}
+                                                        {% else %}
+                                                            <cite>Yet to be allocated.</cite>
+                                                        {% endif %}
+                                                    </td>
                                                     <td>{{ ['$', order.total_value]|join }}</td>
                                                     <td>
-                                                        <a href="{{ ['dealer-order'|page, '/', order.id]|join }}">Edit Order</a>
-                                                        &nbsp;|&nbsp;
-                                                        <a href="{{ ['dealer-order'|page, '/cancel/', order.id]|join }}">Cancel Order</a>
+                                                        <a href="/dealers/orders/{{ order.id }}/edit" class="btn btn-sm btn-deafult" role="button">
+                                                            <i class="fa fa-pencil"></i>&nbsp;
+                                                            Edit
+                                                        </a>
+                                                        <a href="/dealers/orders/{{ order.id }}/cancel" class="btn btn-sm btn-deafult" role="button">
+                                                            <i class="fa fa-trash"></i>&nbsp;
+                                                            Cancel
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 {% endfor %}

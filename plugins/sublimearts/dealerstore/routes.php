@@ -44,3 +44,71 @@ Route::post('/dealerstore/orders', function(Request $data) {
     }
 
 });
+
+Route::get('/dealerstore/orders/{id}/edit', function($id) {
+    $dirtyOrder = Order::with('lineItems.product')->where('id', $id)->first();
+
+    $order = [];
+
+    foreach($dirtyOrder->lineItems as $item)
+    {
+        $order[$item->product->id] = [
+            'product' => [
+                'name' => $item->product->name,
+                'dealer_price' => $item->product->dealer_price,
+                'id' => $item->product->id,
+            ],
+            'order_qty' => $item->product_qty,
+            'value' => $item->value
+        ];
+    }
+
+    return $order;
+});
+
+Route::post('/dealerstore/orders/{id}/edit', function($id, Request $data) {
+    if(!Auth::check()) {
+        return 'No dealer logged in..';
+    } else {
+        $dealer = Auth::getUser();
+    }
+
+    $order = Order::where('id', $id)->first();
+    $dirtyOrder = $data->all();
+    $oldLineItems = $order->lineItems;
+
+    if($dealer->id !== $order->dealer->id) {
+        return "error";
+    }
+
+    $dirtyOrder = $data->all();
+    foreach($dirtyOrder as $rcvdProductId => $rcvdLineItem) {
+        foreach($oldLineItems as $oldLineItem) {
+            if($oldLineItem->product_id == $rcvdProductId) {
+                if($rcvdLineItem['order_qty'] != 0) {
+                    $oldLineItem->product_qty = $rcvdLineItem['order_qty'];
+                    $oldLineItem->value = $rcvdLineItem['value'];
+                    $oldLineItem->save();
+                } else {
+                    $oldLineItem->delete();
+                }
+            } else {
+                $newLineItem = new LineItem;
+                $newLineItem->order_id = $order->id;
+                $newLineItem->product_id = $rcvdProductId;
+                $newLineItem->product_qty = $rcvdLineItem['order_qty'];
+                $newLineItem->value = $rcvdLineItem['value'];
+                $newLineItem->save();
+            }
+        }
+    }
+
+    $order->save();
+
+
+    if($order->save()) {
+        Flash::success('Your order was saved! A confirmation will be emailed to you shortly.');
+    } else {
+        Flash::error('Oh Snap! Something went wrong! Please retry.');
+    }
+});

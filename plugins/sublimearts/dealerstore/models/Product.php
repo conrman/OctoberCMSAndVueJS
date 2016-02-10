@@ -27,6 +27,10 @@ class Product extends Model
         'is_activated'
     ];
 
+    protected $hidden = [
+        'fob_price'
+    ];
+
     /**
      * @var array Relations
      */

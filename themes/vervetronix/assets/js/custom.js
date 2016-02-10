@@ -40,10 +40,15 @@ new Vue({
     
         lines: {},
 
-        order_total: 0
+        order_total: 0,
+
+        mode: 'create'
     },
 
-    created: function() {
+    ready: function() {
+        if(this.mode == 'edit') {
+            this.fetchOrder();
+        } 
         this.fetchProducts();
     },
 
@@ -60,6 +65,23 @@ new Vue({
             }.bind(this));
         },
 
+        fetchOrder: function() {
+            var orderId = this.getIdFromEditUrl();
+
+            this.$http.get('/dealerstore/orders/' + orderId + '/edit', function(order) {
+                this.lines = order;
+                this.$dispatch('line-items-updated');
+            }.bind(this));
+        },
+
+        getIdFromEditUrl: function() {
+            var url = window.location.href,
+                dirtyId = url.replace('http://' + window.location.hostname + '/dealers/orders/', ''),
+                orderId = dirtyId.replace('/edit', '');
+
+            return orderId;
+        },
+
         saveOrder: function() {
             var url = '/dealerstore/orders';
             
@@ -69,6 +91,18 @@ new Vue({
                 console.log('Something went wrong as below:');
                 console.log(response);
             });
+        },
+
+        saveEditedOrder: function() {
+            var orderId = this.getIdFromEditUrl(),
+                url = '/dealerstore/orders/' + orderId + '/edit';
+
+            this.$http.post(url, this.lines).then(function(response) {
+                window.location.replace('/dealers/home');
+            }, function(response) {
+                console.log('Something went wrong as below:');
+                console.log(response);
+            });  
         }
     },
 
@@ -89,11 +123,17 @@ new Vue({
         'line-item': {
             template: '#line-item-template',
     
-            props: ['product', 'lines'],
+            props: ['product', 'lines', 'mode'],
+
+            watch: {
+                lines: function(val, oldVal) {
+                    this.order_qty = (this.lines[this.product.id] != undefined) ? this.lines[this.product.id].order_qty : '';
+                }
+            },
     
             data: function() {
                 return {
-                    order_qty: 0
+                    order_qty: ''
                 };
             },
     
@@ -118,14 +158,11 @@ new Vue({
                             product: {
                                 id: this.product.id,
                                 name: this.product.name,
-                                fob_price: this.product.fob_price,
                                 dealer_price: this.product.dealer_price,
-                                retail_price: this.product.retail_price,
-                                retail_price: this.product.retail_price,
                                 code: this.product.code
                             },
                             order_qty: this.order_qty,
-                            value: this.lineValue
+                            value: this.lineValue 
                         };
                     } else {
                         delete this.lines[this.product.id];
@@ -138,5 +175,4 @@ new Vue({
         }
     }
 });
-
 // ---------------------------------- x ----------------------------------
