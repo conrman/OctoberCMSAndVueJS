@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\Log;
 use October\Rain\Support\Facades\Flash;
 use Illuminate\Support\Facades\Session;
 
+// Get All Products
 Route::get('/dealerstore/products', function() {
     return Product::all()->toArray();
 });
 
+
+// Save a New Order
 Route::post('/dealerstore/orders', function(Request $data) {
     $dirtyOrder = $data->all();
 
@@ -45,6 +48,7 @@ Route::post('/dealerstore/orders', function(Request $data) {
 
 });
 
+// Load an order for editing
 Route::get('/dealerstore/orders/{id}/edit', function($id) {
     $dirtyOrder = Order::with('lineItems.product')->where('id', $id)->first();
 
@@ -66,6 +70,7 @@ Route::get('/dealerstore/orders/{id}/edit', function($id) {
     return $order;
 });
 
+// Save an Edited Order
 Route::post('/dealerstore/orders/{id}/edit', function($id, Request $data) {
     if(!Auth::check()) {
         return 'No dealer logged in..';
@@ -74,41 +79,62 @@ Route::post('/dealerstore/orders/{id}/edit', function($id, Request $data) {
     }
 
     $order = Order::where('id', $id)->first();
-    $dirtyOrder = $data->all();
+    $rcvdLineItems = $data->all();
     $oldLineItems = $order->lineItems;
 
     if($dealer->id !== $order->dealer->id) {
         return "error";
     }
 
-    $dirtyOrder = $data->all();
-    foreach($dirtyOrder as $rcvdProductId => $rcvdLineItem) {
-        foreach($oldLineItems as $oldLineItem) {
-            if($oldLineItem->product_id == $rcvdProductId) {
-                if($rcvdLineItem['order_qty'] != 0) {
-                    $oldLineItem->product_qty = $rcvdLineItem['order_qty'];
-                    $oldLineItem->value = $rcvdLineItem['value'];
-                    $oldLineItem->save();
+    foreach($oldLineItems as $oldLineItem) 
+    {
+        if(!array_has($rcvdLineItems, $oldLineItem->product_id)) {
+            // Product qty was zeroed out during editing
+            $oldLineItem->delete();
+            $order->updateTotal();
+            $order->save();
+        } else {
+            foreach($rcvdLineItems as $rcvdProductId => $rcvdLineItem)
+            {
+                if($oldLineItem->product_id == $rcvdProductId) {
+                    $line = $oldLineItem;
                 } else {
-                    $oldLineItem->delete();
+                    $line = new LineItem;
+                    $line->order_id = $order->id;
+                    $line->product_id = $rcvdProductId;
                 }
-            } else {
-                $newLineItem = new LineItem;
-                $newLineItem->order_id = $order->id;
-                $newLineItem->product_id = $rcvdProductId;
-                $newLineItem->product_qty = $rcvdLineItem['order_qty'];
-                $newLineItem->value = $rcvdLineItem['value'];
-                $newLineItem->save();
+
+                $line->product_qty = $rcvdLineItem['order_qty'];
+                $line->value = $rcvdLineItem['value'];
+                $line->save();
             }
         }
     }
 
+    $order->updateTotal();
     $order->save();
-
 
     if($order->save()) {
         Flash::success('Your order was saved! A confirmation will be emailed to you shortly.');
     } else {
         Flash::error('Oh Snap! Something went wrong! Please retry.');
     }
+});
+
+
+Route::delete('/dealerstore/orders/{id}/cancel', function($id) {
+    if(!Auth::check()) {
+        return 'No dealer logged in..';
+    } else {
+        $dealer = Auth::getUser();
+    }
+
+    $order = Order::where('id', $id)->first();
+
+    if($dealer->id !== $order->dealer->id) {
+        return "error";
+    }
+
+    $order->delete();
+    Flash::success('Your order was cancelled! A confirmation will be emailed to you shortly.');
 });

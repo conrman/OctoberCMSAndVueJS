@@ -46,7 +46,7 @@ new Vue({
     },
 
     ready: function() {
-        if(this.mode == 'edit') {
+        if(this.mode == 'edit' || this.mode == 'cancel') {
             this.fetchOrder();
         } 
         this.fetchProducts();
@@ -66,7 +66,11 @@ new Vue({
         },
 
         fetchOrder: function() {
-            var orderId = this.getIdFromEditUrl();
+            if(this.mode == 'edit') {
+                var orderId = this.getIdFromEditUrl();
+            } else if(this.mode == 'cancel') {
+                var orderId = this.getIdFromCancelUrl();
+            }
 
             this.$http.get('/dealerstore/orders/' + orderId + '/edit', function(order) {
                 this.lines = order;
@@ -78,6 +82,14 @@ new Vue({
             var url = window.location.href,
                 dirtyId = url.replace('http://' + window.location.hostname + '/dealers/orders/', ''),
                 orderId = dirtyId.replace('/edit', '');
+
+            return orderId;
+        },
+
+        getIdFromCancelUrl: function() {
+            var url = window.location.href,
+                dirtyId = url.replace('http://' + window.location.hostname + '/dealers/orders/', ''),
+                orderId = dirtyId.replace('/cancel', '');
 
             return orderId;
         },
@@ -98,6 +110,18 @@ new Vue({
                 url = '/dealerstore/orders/' + orderId + '/edit';
 
             this.$http.post(url, this.lines).then(function(response) {
+                window.location.replace('/dealers/home');
+            }, function(response) {
+                console.log('Something went wrong as below:');
+                console.log(response);
+            });  
+        },
+
+        cancelOrder: function() {
+            var orderId = this.getIdFromCancelUrl(),
+                url = '/dealerstore/orders/' + orderId + '/cancel';
+
+            this.$http.delete(url).then(function(response) {
                 window.location.replace('/dealers/home');
             }, function(response) {
                 console.log('Something went wrong as below:');
