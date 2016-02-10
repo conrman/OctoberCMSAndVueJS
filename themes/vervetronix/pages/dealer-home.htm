@@ -97,18 +97,18 @@ var oxyThemeData = {
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <div class="row">
+                                        <div class="row os-animation" data-os-animation="fadeInDown" data-os-animation-delay="0s" 
+                                             v-show="hasAnOrder">
                                             <div class="col-md-8">
-                                                <div class="order-controls">
+                                                <div class="order-controls pull-right">
                                                     <button class="btn btn-default"
-                                                            @click="saveOrder"
-                                                            v-show="hasAnOrder">
+                                                            @click="saveOrder">
                                                         Save Order
                                                     </button>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="panel panel-success  element-normal-top element-short-bottom os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+                                                <div class="panel panel-success element-no-top element-short-bottom">
                                                     <div class="panel-heading">
                                                         <h3 class="panel-title">
                                                             Order Total

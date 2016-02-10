@@ -65,10 +65,23 @@ var oxyThemeData = {
         </section>
         <section class="section swatch-black">
             <div class="container">
-                <div class="row element-tall-top element-tall-bottom">
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <p class="element-short-top">
+                            <i class="fa fa-angle-double-left"></i>
+                            <a href="{{ 'dealer-home'|page }}">Back to Account Home</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section swatch-black">
+            <div class="container">
+                <div class="row element-short-top element-tall-bottom">
                     <div class="col-md-10 col-md-offset-1">
                         <p class="lead element-short-top element-no-bottom">
-                            <strong>Status: PENDING</strong> 
+                            <strong>Current Status: PENDING</strong> 
                         </p>
                         <p class="element-short-bottom">
                             {% if order.tentative_shipping_on %}
@@ -81,13 +94,15 @@ var oxyThemeData = {
                         <div id="vue-ordering-system">
                             <input type="text" hidden="true" v-model="mode" value="edit">
                             <table class="table table-hover">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Product</th>
-                                    <th>Unit Price</th>
-                                    <th>Order Qty</th>
-                                    <th>Line Value</th>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Product</th>
+                                        <th>Unit Price</th>
+                                        <th>Order Qty</th>
+                                        <th>Line Value</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr v-for="product in products" 
                                         is="line-item"
