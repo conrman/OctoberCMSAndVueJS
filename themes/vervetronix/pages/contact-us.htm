@@ -1,0 +1,38 @@
+title = "Contact Us | VerveTronix"
+url = "/contact-us"
+layout = "alt-classic-layout"
+description = "Contact Us | VerveTronix"
+is_hidden = "0"
+meta_title = "Contact Us | VerveTronix"
+
+[contactForm]
+==
+{% partial "classic-header" %}
+
+<div id="content">
+    <article>
+        <section class="section swatch-black section-text-shadow section-inner-shadow">
+            <div class="background-overlay grid-overlay-0 " style="background-color: rgba(46,51,57,1);"></div>
+            <div class="container">
+                <div class="row element-normal-bottom">
+                    <div class="col-md-12  text-center small-screen-default">
+                        <header class="text-center  element-normal-top element-normal-bottom condensed os-animation" data-os-animation="fadeInDown" data-os-animation-delay="0s">
+                            <h1 class="super hairline bordered bordered-normal">
+                                 Get in Touch
+                            </h1>
+                            <p class="lead">Need to talk to us? We will be in touch before you know it!</p>
+                        </header>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            {% component "contactForm" %}
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </article>
+
+    {% partial "simple-footer" %}
+</div>
