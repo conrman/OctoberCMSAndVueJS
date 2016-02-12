@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
 
             $table->string('name')->unique();
             $table->string('code')->unique();
+            $table->string('tagline');
             $table->longText('description');
             $table->float('fob_price');
             $table->float('dealer_price');

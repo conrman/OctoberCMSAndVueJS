@@ -11,6 +11,10 @@ fields:
         label: Code
         preset: name
         span: right
+    
+    tagline:
+        label: Tagline
+        span: left
 
     description:
         label: Description

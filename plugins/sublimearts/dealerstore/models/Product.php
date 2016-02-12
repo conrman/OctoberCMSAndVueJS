@@ -21,6 +21,7 @@ class Product extends Model
         'name',
         'code',
         'description',
+        'tagline',
         'fob_price',
         'dealer_price',
         'retail_price',

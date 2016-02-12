@@ -10,7 +10,23 @@ class SeedUsersTable extends Seeder
         $product = Product::create([
             'name'          => 'Mojo',
             'code'          => 'mojo',
-            'description'   => 'Lorem ipsum Consectetur pariatur Excepteur in consequat adipisicing sed fugiat consequat do Excepteur exercitation in Duis sint do et anim ad consequat ad velit quis pariatur est quis dolore deserunt consectetur nulla Duis ut minim nisi in dolor laborum officia voluptate Duis tempor exercitation culpa ullamco magna in non et quis cillum elit ad ut id est mollit fugiat Duis labore amet enim quis voluptate cupidatat incididunt est aute dolore do velit magna mollit ea laboris ut fugiat labore ut aliqua laborum dolor ad magna reprehenderit dolor nisi laboris cupidatat dolor ut culpa commodo reprehenderit officia est esse in Ut culpa ea sint occaecat proident proident Duis exercitation in commodo ut ea ex ea cillum consectetur est do reprehenderit quis sit dolor labore velit in proident voluptate nostrud occaecat consequat dolor deserunt laboris labore amet minim dolor reprehenderit ullamco mollit laboris eiusmod proident Ut labore irure mollit Ut elit proident ut ullamco eiusmod cillum enim eu magna in officia do qui ex do veniam non labore dolor ad consequat culpa Ut enim proident aute commodo nostrud adipisicing irure sit nostrud non dolor dolore qui Duis consequat in consectetur est dolor sit.',
+            'tagline'       => 'USB MIDI Foot Controller',
+            'description'   => '
+                <ul>
+                    <li>USB based Midi Controller that works on any cross platform like MACOSX, Windows & Linux without additional drivers or software installation.</li>
+                    <li>Hands free control over your favourite DAWs to control the parameters.</li>
+                    <li>Control the stomp boxes and patches of your DAW like real pedals.</li>
+                    <li>Works with your favourite softwares like Abelton Live, Logic, Guitar Rig, Cubase, Nuendo etc.</li>
+                    <li>Rigid metal construction and stomp switches.</li>
+                    <li>USB powered and does not require additional power supply.</li>
+                    <li>Does not alter any audio signal.</li>
+                    <li>Take your favourite DAW for LIVE playing!</li>
+                    <li>Controls pedals and effects on your computer or mac.</li>
+                    <li>Ideal for all musicians (Guitars, Bass, Vocals, Keyboard players and anyone who uses MIDI)</li>
+                    <li>Easy programming no additional software needed.</li>
+                    <li>Extra Expression pedal input allows to feed in standard expression pedal (like Roland etc) and convert it to USB expression pedal.</li>
+                </ul>
+            ',
             'fob_price'     => 200,
             'dealer_price'  => 300,
             'retail_price'  => 500,
@@ -18,12 +34,77 @@ class SeedUsersTable extends Seeder
         ]);
         
         $product = Product::create([
-            'name'          => 'FCB Mach 1',
-            'code'          => 'fcb-mach-1',
-            'description'   => 'Lorem ipsum Consectetur pariatur Excepteur in consequat adipisicing sed fugiat consequat do Excepteur exercitation in Duis sint do et anim ad consequat ad velit quis pariatur est quis dolore deserunt consectetur nulla Duis ut minim nisi in dolor laborum officia voluptate Duis tempor exercitation culpa ullamco magna in non et quis cillum elit ad ut id est mollit fugiat Duis labore amet enim quis voluptate cupidatat incididunt est aute dolore do velit magna mollit ea laboris ut fugiat labore ut aliqua laborum dolor ad magna reprehenderit dolor nisi laboris cupidatat dolor ut culpa commodo reprehenderit officia est esse in Ut culpa ea sint occaecat proident proident Duis exercitation in commodo ut ea ex ea cillum consectetur est do reprehenderit quis sit dolor labore velit in proident voluptate nostrud occaecat consequat dolor deserunt laboris labore amet minim dolor reprehenderit ullamco mollit laboris eiusmod proident Ut labore irure mollit Ut elit proident ut ullamco eiusmod cillum enim eu magna in officia do qui ex do veniam non labore dolor ad consequat culpa Ut enim proident aute commodo nostrud adipisicing irure sit nostrud non dolor dolore qui Duis consequat in consectetur est dolor sit.',
+            'name'          => 'VX1',
+            'code'          => 'vx1',
+            'tagline'       => 'USB Based Expression Pedal',
+            'description'   => '
+                <ul>
+                    <li>Plug and play expression pedal for computers and Mac.</li>
+                    <li>Works with Mac, Windows and Linux.</li>
+                    <li>Does not alter any audio signal.</li>
+                    <li>Assign your favourite effects like Wah, Volume, Pitch shifter, Envelope filter effects etc.</li>
+                    <li>Easy to assign parameter control.</li>
+                    <li>Works with Logic, Abelton Live, Guitar Rig, Cubase etc</li>
+                    <li>One pedal assignable to multiple expressions through your DAW.</li>
+                    <li>Ideal for all musicians (Guitars, Bass, Vocals, Keyboard players and anyone who uses MIDI)</li>
+                    <li>Easy Midi assignment capability.</li>
+                </ul>
+            ',
             'fob_price'     => 150,
             'dealer_price'  => 250,
             'retail_price'  => 450,
+            'is_activated'  => true
+        ]);
+       
+        $product = Product::create([
+            'name'          => 'Dynamo Pro',
+            'code'          => 'dynamo-pro',
+            'tagline'       => 'Analog Linear Power Supply',
+            'description'   => '
+                <ul>
+                    <li>Fully analog regulated multi output rail power supply for pedals.</li>
+                    <li>Toroidal transformer with ground shield for chassis.</li>
+                    <li>4 True Isolated Rails with total of 11 DC power outlets.</li>
+                    <li>Noiseless performance.</li>
+                    <li>Individual dedicated regulators for each rail.</li>
+                    <li>Fuse protection circuit to protect your expensive gear.</li>
+                    <li>All the 4 rails have an LED indicator indicating any shortage in your pedals.</li>
+                    <li>User changeable fuse operation for easy replacement if needed.</li>
+                    <li>1st rail consists of 4 9V DC power outlets with total power of 500mA</li>
+                    <li>2nd rail consists of 4 9V DC power outlets with total power of 500mA</li>
+                    <li>3rd rail consists of 2 9V DC power outlets with total power of 500mA</li>
+                    <li>4th rail consists of 1 Variable Power outlet of 500mA letting you choose between SAG mode, 9VDC or 12VDC.</li>
+                    <li>Length 11.4”, Width 4.5” and Height 1.96” (All measurements are in inches)</li>
+                </ul>
+            ',
+            'fob_price'     => 200,
+            'dealer_price'  => 250,
+            'retail_price'  => 350,
+            'is_activated'  => true
+        ]);
+       
+        $product = Product::create([
+            'name'          => 'Dynamo',
+            'code'          => 'dynamo',
+            'tagline'       => 'Analog Linear power Supply',
+            'description'   => '
+                <ul>
+                    <li>Fully analog regulated multi output rail power supply for pedals.</li>
+                    <li>Toroidal transformer with ground shield for chassis.</li>
+                    <li>2 True Isolated Rails with total of 8 DC power outlets.</li>
+                    <li>Noiseless performance.</li>
+                    <li>Individual dedicated regulators for each rail.</li>
+                    <li>Fuse protection circuit to protect your expensive gears.</li>
+                    <li>Both the rails have an LED indicator indicating any shortage in your pedals.</li>
+                    <li>User changeable fuse operation for easy replacement if needed.</li>
+                    <li>1st rail consists of 4 9V DC power outlets with total power of 500mA.</li>
+                    <li>2nd rail consists of 4 9V DC power outlets with total power of 500mA.</li>
+                    <li>Length 7.8”, Width 4.5” and Height 1.96” (All measurements are in inches).</li>
+                </ul>
+            ',
+            'fob_price'     => 150,
+            'dealer_price'  => 200,
+            'retail_price'  => 250,
             'is_activated'  => true
         ]);
     }
