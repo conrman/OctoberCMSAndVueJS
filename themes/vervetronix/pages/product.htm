@@ -1,0 +1,93 @@
+title = "Product Page | VerveTronix"
+url = "/products/:slug"
+layout = "classic-layout"
+description = "Product Page | VerveTronix"
+is_hidden = "0"
+meta_title = "Product Page | VerveTronix"
+==
+<?php
+    use SublimeArts\DealerStore\Models\Product;
+    function onInit()
+    {
+        $products = Product::all();
+        $this['product'] = $product = $products->where('code', $this->param('slug'))->first();
+        $this->page->title = $product->name . ' | VerveTronix';
+        $this->page->description = $product->name . ' | VerveTronix';
+        $this->page->meta_description = $product->name . ' | VerveTronix';
+    }
+?>
+==
+{% partial "classic-header" %}
+
+<div id="content">
+    <article>
+        <section class="section swatch-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="text-center element-tall-top element-no-bottom os-animation condensed" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                            <h1 class="bigger hairline bordered bordered-normal">
+                                {{ product.name }}
+                            </h1>
+                        </header>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="figure element-normal-top element-short-bottom os-animation image-filter-none image-filter-onhover text-center figcaption-middle normalwidth" data-os-animation="fadeInLeft" data-os-animation-delay="0.3s">
+                                <span class="figure-image">
+                                    <img src="{{ product.product_images[0].path }}" alt="" class="normalwidth">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="element-normal-top element-no-bottom os-animation" data-os-animation="fadeInRight" data-os-animation-delay="0.3s">
+                                <p>
+                                    <h4>
+                                        <cite>{{ product.tagline }}</cite>
+                                    </h4>
+                                </p>
+
+                                {{ product.description|raw }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="element-short-top">
+            <hr>
+        </div>
+
+        <section class="section">
+            <header class="text-center element-normal-top element-no-bottom os-animation condensed" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                <h1 class="bigger hairline bordered bordered-normal">
+                    Product Gallery
+                </h1>
+            </header>
+            <div class="container element-normal-top element-normal-bottom">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tp-banner-container">
+                            <div class="tp-banner element-no-top element-no-bottom">
+                                <ul>
+                                    {% for image in product.product_images %}
+                                    <li data-transition="fade" data-slotamount="4">
+                                        <img src="{{ image.path }}" data-bgposition="center center" data-bgpositionend="center center"  data-ease="easeInOut">
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            
+        </section>
+    </article>
+
+    {% partial "simple-footer" %}
+</div>

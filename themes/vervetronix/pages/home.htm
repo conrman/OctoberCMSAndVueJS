@@ -56,58 +56,66 @@ var oxyThemeData = {
             </div>
         </section>
         
-        {% for product in products %}
-        <section class="section swatch-white" id="{{ product.name|lower|replace({' ': '_'}) }}">
-            <div class="container-fullwidth">
+        <section class="section swatch-gray">
+            <div class="container element-short-top element-tall-bottom">
                 <div class="row">
-                    <div class="col-md-12 text-center">
-                        <header class="text-center element-medium-top element-short-bottom not-condensed os-animation" data-os-animation="fadeIn" data-os-animation-delay="1s">
-                            <h2 class="bigger hairline bordered bordered-normal">
-                                {{ product.name }}
+                    <div class="col-md-12">
+                        <header class="element-normal-top element-normal-bottom os-animation condensed text-center" data-os-animation="fadeIn" data-os-animation-delay="1s">
+                            <h2 class="super hairline bordered bordered-normal">
+                                Our Products
                             </h2>
                         </header>
-
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-10">
-                                <div class="row">
-                                    <div class="col-md-6 text-center element-medium-top">
-                                        <div class="tp-banner-container">
-                                            <div class="tp-banner element-no-top element-no-bottom">
-                                                <ul>
-                                                    {% for image in product.product_images %}
-                                                    <li data-transition="fade" data-slotamount="4">
-                                                        <img src="{{ image.path }}" data-bgposition="center center" data-bgpositionend="center center"  data-ease="easeInOut" data-startheight="500">
-                                                    </li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 text-left">
-                                        <div style="margin-left: 1em;" class="element-medium-top element-short-bottom os-animation" data-os-animation="fadeIn" data-os-animation-delay="0s">
-                                            {{ product.description|raw }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 text-center element-short-top element-medium-bottom">
-                                        <a href="{{ 'dealership'|page }}" class="btn btn-link btn-primary">Become a <strong>Dealer</strong></a>
-                                        <a href="{{ 'buy-locations'|page }}" class="btn btn-link btn-primary">Where to <strong>Buy</strong></a>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- {% for product in products %}
+                    <div class="col-md-3">
+                        <a href="{{ 'product'|page({ slug: product.code }) }}">
+                            <img src="{{ product.thumbnail_image.path }}" alt="{{ product.name }}">
+                        </a>
+                        <div class="row element-short-top">
+                            <div class="col-md-12">
+                                <a href="{{ 'product'|page({ slug: product.code }) }}">
+                                    <h3>{{ product.name|upper }}</h3>
+                                    <p class="small bold">
+                                        {{ product.tagline|upper }}
+                                    </p>
+                                </a>
                             </div>
                         </div>
                     </div>
+                    {% endfor %} -->
+
+                    <div class="portfolio-container element-medium-top element-medium-bottom">
+                        <div class="portfolio masonry " data-padding="5" data-col-xs="2" data-col-sm="3" data-col-md="4" data-col-lg="4" data-layout="fitRows">
+                            {% for product in products %}
+                                <div class="masonry-item portfolio-item isotope-item" data-menu-order="1" data-title="{{ [product.name, ' | ', product.tagline]|join }}">
+                                    <div class="figure portfolio-os-animation element-no-top element-no-bottom text-center figcaption-middle normalwidth image-filter-grayscale fade-in image-filter-onhover" data-os-animation="fadeIn" data-os-animation-delay="0s">
+                                        <a href="{{ product.thumbnail_image.path }}" class="figure-image magnific" data-links="" target="_self">
+                                            <img src="{{ product.thumbnail_image.path }}" alt="{{ product.name }}" class="normalwidth">
+                                            <div class="figure-overlay grid-overlay-20">
+                                                <div class="figure-overlay-container">
+                                                    <p>{{ product.tagline }}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="{{ 'product'|page({ slug: product.code }) }}">
+                                            <h3 class="figure-caption-title bordered bordered-small bordered-link element-short-top">
+                                                {{ product.name|upper }}
+                                            </h3>
+                                            <p class="figure-caption-description small condensed" style="color: #51819F">
+                                                {{ product.tagline|upper }}
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </section>
-
-        {% if not loop.last %}
-        <div class="seperator">
-            <hr>
-        </div>
-        {% endif %}
-        {% endfor %}
 
     </article>
 

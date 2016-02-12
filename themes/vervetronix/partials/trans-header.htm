@@ -45,7 +45,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products</a>
                     <ul class="dropdown-menu">
                         {% for product in products %}
-                        <li><a href="{{ ['home'|page, '#', product.name|lower|replace({' ': '_'})]|join }}">{{ product.name }}</a></li>
+                        <li><a href="{{ ['/products/', product.code ]|join }}">{{ product.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -78,7 +78,7 @@
                                 <a href="{{ 'dealer-home'|page }}">Account Home</a>
                             </li>
                             <li>
-                                <a data-request="onLogout" data-request-data="redirect: '/'">Sign out</a>
+                                <a data-request="onLogout" data-request-data="redirect: '{{ 'dealer-login'|page }}'">Sign out</a>
                             </li>
                         </ul>
                     </li>
