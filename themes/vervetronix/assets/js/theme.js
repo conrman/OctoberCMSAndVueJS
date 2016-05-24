@@ -1,10 +1,3 @@
-/* ========================================================================
- * Omega: theme.js
- * Main Theme Javascript file
- * ========================================================================
- * Copyright 2014 Oxygenna LTD
- * ======================================================================== */
-
 'use strict';
 
 // ignore camel case because it breaks jshint for vars from php localisation
