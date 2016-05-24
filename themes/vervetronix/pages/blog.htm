@@ -1,0 +1,104 @@
+title = "Blog | VerveTronix"
+url = "/blog"
+layout = "master-layout"
+description = "Blog | VerveTronix"
+is_hidden = 0
+meta_title = "Blog | VerveTronix"
+
+==
+<?php
+  use RainLab\Blog\Models\Post;
+  use RainLab\Blog\Models\Category;
+  use SublimeArts\BlogExtension\Models\Tag;
+  use Illuminate\Database\Eloquent\Collection;
+
+  function onInit()
+  {
+    $this['posts'] = $posts = Post::isPublished()->orderBy('published_at', 'DESC')->paginate('10');
+
+    // Meta Info
+    $this->page->title = "Blog | Vervetronix";
+    $this->page->description = 'Useful resources for everyone. Share and Learn with folks just like you or wildly different.';
+    $this->page->meta_title = $this->page->title;
+    $this->page->meta_description = $this->page->description;
+
+    // Setup a Summary or Summary-Large-Image Twitter Cards
+    $this->page['twitter_card'] = 'summary_large_image';
+
+    $siteUrl = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
+
+    // Setup Open Graph Tags
+    $this->page['og_url'] = $siteUrl . $this->page->url;
+    $this->page['og_image'] = $siteUrl . '/themes/haswell/assets/images/open-graph/og-homepage.jpg';
+    $this->page['og_title'] = $this->page->title;
+    $this->page['og_description'] = $this->page->description;
+  }
+?>
+==
+{% partial "trans-header" %}
+
+<script type="text/javascript">
+var oxyThemeData = {
+    navbarHeight: 90,
+    navbarScrolled: 70,
+    navbarScrolledPoint: 200,
+    navbarScrolledSwatches:
+    {
+        up: 'swatch-black',
+        down: 'swatch-white'
+    },
+    scrollFinishedMessage: 'No more items to load.',
+    hoverMenu:
+    {
+        hoverActive: true,
+        hoverDelay: 1,
+        hoverFadeDelay: 200
+    }
+};
+</script>
+
+<div id="content">
+    <article>
+        <section class="section swatch-blue section-text-shadow section-inner-shadow">
+            <div class="background-media" style="background-image: url('{{ 'assets/images/uploads/image-02-normal.jpg'|theme }}'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; background-position: 50% 0%;" data-start="background-position:"
+            data-70-top-bottom="background-position:">
+            </div>
+            <div class="background-overlay grid-overlay-20 " style="background-color: rgba(0,0,0,0.4);"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <header class="text-center element-tall-top element-tall-bottom condensed">
+                            <h1 class="super hairline bordered-normal">
+                                Our Blog
+                            </h1>
+                        </header>
+                        <div class="masonry blog-masonry use-masonry isotope  element-tall-top element-tall-bottom" data-padding="12" data-col-xs="1" data-col-sm="2" data-col-md="4" data-col-lg="4">
+                            {% for post in posts %}
+                                <article class="post-masonry masonry-item masonry-wide isotope-item" data-menu-order="0">
+                                    <div class="post-masonry-inner blog-os-animation" data-os-animation="fadeIn" data-os-animation-delay="0.1s">
+                                        <a class="post-masonry-content swatch-white" href="{{ 'blog-post'|page({ slug: post.slug }) }}">
+                                            <img alt="{{ post.title }}" src="{{ post.featured_images[0].path }}">
+                                            <div class="post-head small-screen-center">
+                                                <h2 class="post-title bordered bordered-small">
+                                                    {{ post.title }}
+                                                </h2>
+                                                <small> 
+                                                    {{ post.published_at|date("F jS Y") }}
+                                                </small>
+                                            </div>
+                                            <p class="post-body">
+                                                {{ post.excerpt }}
+                                            </p>
+                                        </a>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    {% partial "simple-footer" %}
+</div>

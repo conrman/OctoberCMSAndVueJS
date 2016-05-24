@@ -1,0 +1,18 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+
+    name:
+        label: Name
+        searchable: true
+        sortable: true
+
+    description:
+        label: Description
+        searchable: true
+
+    post_count:
+        label: Post Count
+        sortable: true

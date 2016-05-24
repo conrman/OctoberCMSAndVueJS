@@ -1,0 +1,8 @@
+1.0.1: First version of BlogExtension
+1.0.2:
+    - Add the Stats table
+    - create_stats_table.php
+1.0.3:
+    - Add the Tags table
+    - create_tags_table.php
+    - seed_tags_table.php

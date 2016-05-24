@@ -1,0 +1,24 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: Tag Name
+        placeholder: Enter Tag Name
+        span: left
+
+    slug:
+        label: Tag Slug / URL
+        span: right
+        placeholder: tag-name
+        preset:
+            field: name
+            type: slug
+
+    description:
+        label: Description
+        type: textarea
+        size: large
+        streatch: true
